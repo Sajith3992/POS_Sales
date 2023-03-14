@@ -29,6 +29,7 @@ namespace POS_Sales
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.panelSlide = new System.Windows.Forms.Panel();
             this.panelLog = new System.Windows.Forms.Panel();
             this.panelTitle = new System.Windows.Forms.Panel();
@@ -49,22 +50,30 @@ namespace POS_Sales
             this.button10 = new System.Windows.Forms.Button();
             this.button11 = new System.Windows.Forms.Button();
             this.button12 = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.panelSubSetting = new System.Windows.Forms.Panel();
             this.button13 = new System.Windows.Forms.Button();
             this.button14 = new System.Windows.Forms.Button();
             this.button15 = new System.Windows.Forms.Button();
+            this.labelUserName = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.labelRole = new System.Windows.Forms.Label();
+            this.lblName = new System.Windows.Forms.Label();
+            this.labelTitle = new System.Windows.Forms.Label();
             this.panelSlide.SuspendLayout();
+            this.panelLog.SuspendLayout();
+            this.panelTitle.SuspendLayout();
             this.panelSubProduct.SuspendLayout();
             this.panelSubStock.SuspendLayout();
             this.panelSubRecord.SuspendLayout();
-            this.panel1.SuspendLayout();
+            this.panelSubSetting.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // panelSlide
             // 
             this.panelSlide.AutoScroll = true;
             this.panelSlide.Controls.Add(this.button15);
-            this.panelSlide.Controls.Add(this.panel1);
+            this.panelSlide.Controls.Add(this.panelSubSetting);
             this.panelSlide.Controls.Add(this.button12);
             this.panelSlide.Controls.Add(this.panelSubRecord);
             this.panelSlide.Controls.Add(this.button9);
@@ -83,6 +92,10 @@ namespace POS_Sales
             // 
             // panelLog
             // 
+            this.panelLog.Controls.Add(this.lblName);
+            this.panelLog.Controls.Add(this.labelUserName);
+            this.panelLog.Controls.Add(this.labelRole);
+            this.panelLog.Controls.Add(this.pictureBox1);
             this.panelLog.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelLog.Location = new System.Drawing.Point(0, 0);
             this.panelLog.Name = "panelLog";
@@ -91,6 +104,7 @@ namespace POS_Sales
             // 
             // panelTitle
             // 
+            this.panelTitle.Controls.Add(this.labelTitle);
             this.panelTitle.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelTitle.Location = new System.Drawing.Point(200, 0);
             this.panelTitle.Name = "panelTitle";
@@ -337,15 +351,15 @@ namespace POS_Sales
             this.button12.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button12.UseVisualStyleBackColor = true;
             // 
-            // panel1
+            // panelSubSetting
             // 
-            this.panel1.Controls.Add(this.button13);
-            this.panel1.Controls.Add(this.button14);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 763);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(183, 90);
-            this.panel1.TabIndex = 8;
+            this.panelSubSetting.Controls.Add(this.button13);
+            this.panelSubSetting.Controls.Add(this.button14);
+            this.panelSubSetting.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelSubSetting.Location = new System.Drawing.Point(0, 763);
+            this.panelSubSetting.Name = "panelSubSetting";
+            this.panelSubSetting.Size = new System.Drawing.Size(183, 90);
+            this.panelSubSetting.TabIndex = 8;
             // 
             // button13
             // 
@@ -394,6 +408,57 @@ namespace POS_Sales
             this.button15.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button15.UseVisualStyleBackColor = true;
             // 
+            // labelUserName
+            // 
+            this.labelUserName.AutoSize = true;
+            this.labelUserName.ForeColor = System.Drawing.Color.White;
+            this.labelUserName.Location = new System.Drawing.Point(44, 121);
+            this.labelUserName.Name = "labelUserName";
+            this.labelUserName.Size = new System.Drawing.Size(85, 20);
+            this.labelUserName.TabIndex = 0;
+            this.labelUserName.Text = "UserName";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(48, 12);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(75, 72);
+            this.pictureBox1.TabIndex = 1;
+            this.pictureBox1.TabStop = false;
+            // 
+            // labelRole
+            // 
+            this.labelRole.AutoSize = true;
+            this.labelRole.ForeColor = System.Drawing.Color.White;
+            this.labelRole.Location = new System.Drawing.Point(44, 147);
+            this.labelRole.Name = "labelRole";
+            this.labelRole.Size = new System.Drawing.Size(104, 20);
+            this.labelRole.TabIndex = 1;
+            this.labelRole.Text = "Administrator";
+            // 
+            // lblName
+            // 
+            this.lblName.AutoSize = true;
+            this.lblName.ForeColor = System.Drawing.Color.White;
+            this.lblName.Location = new System.Drawing.Point(3, 96);
+            this.lblName.Name = "lblName";
+            this.lblName.Size = new System.Drawing.Size(25, 20);
+            this.lblName.TabIndex = 2;
+            this.lblName.Text = "Ln";
+            this.lblName.Visible = false;
+            // 
+            // labelTitle
+            // 
+            this.labelTitle.Font = new System.Drawing.Font("Century Schoolbook", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelTitle.ForeColor = System.Drawing.Color.White;
+            this.labelTitle.Location = new System.Drawing.Point(272, 9);
+            this.labelTitle.Name = "labelTitle";
+            this.labelTitle.Size = new System.Drawing.Size(435, 20);
+            this.labelTitle.TabIndex = 3;
+            this.labelTitle.Text = "Title Name";
+            this.labelTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -410,10 +475,14 @@ namespace POS_Sales
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Point Of Sales";
             this.panelSlide.ResumeLayout(false);
+            this.panelLog.ResumeLayout(false);
+            this.panelLog.PerformLayout();
+            this.panelTitle.ResumeLayout(false);
             this.panelSubProduct.ResumeLayout(false);
             this.panelSubStock.ResumeLayout(false);
             this.panelSubRecord.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
+            this.panelSubSetting.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -437,13 +506,18 @@ namespace POS_Sales
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button15;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panelSubSetting;
         private System.Windows.Forms.Button button13;
         private System.Windows.Forms.Button button14;
         private System.Windows.Forms.Button button12;
         private System.Windows.Forms.Panel panelSubRecord;
         private System.Windows.Forms.Button button10;
         private System.Windows.Forms.Button button11;
+        private System.Windows.Forms.Label lblName;
+        private System.Windows.Forms.Label labelUserName;
+        private System.Windows.Forms.Label labelRole;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label labelTitle;
     }
 }
 
