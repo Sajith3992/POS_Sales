@@ -7,15 +7,25 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
 namespace POS_Sales
 {
+
     public partial class MainForm1 : Form
     {
+        /*Add a connection line */
+        SqlConnection cn = new SqlConnection();
+        SqlCommand cm = new SqlCommand();
+        DBConnect dbcn = new DBConnect();
+
         public MainForm1()
         {
             InitializeComponent();
             customizeDesign();
+            cn = new SqlConnection(dbcn.myConnection());
+            cn.Open();
+           
         }
 
         private void button6_Click(object sender, EventArgs e)
