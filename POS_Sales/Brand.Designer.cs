@@ -29,12 +29,12 @@ namespace POS_Sales
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Brand));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.dvgBrand = new System.Windows.Forms.Label();
             this.btnAdd = new System.Windows.Forms.Button();
+            this.dvgBrand = new System.Windows.Forms.Label();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -54,6 +54,30 @@ namespace POS_Sales
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(984, 69);
             this.panel1.TabIndex = 0;
+            // 
+            // btnAdd
+            // 
+            this.btnAdd.FlatAppearance.BorderSize = 0;
+            this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAdd.Image = ((System.Drawing.Image)(resources.GetObject("btnAdd.Image")));
+            this.btnAdd.Location = new System.Drawing.Point(849, 21);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(36, 26);
+            this.btnAdd.TabIndex = 1;
+            this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            // 
+            // dvgBrand
+            // 
+            this.dvgBrand.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dvgBrand.ForeColor = System.Drawing.Color.White;
+            this.dvgBrand.Image = ((System.Drawing.Image)(resources.GetObject("dvgBrand.Image")));
+            this.dvgBrand.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.dvgBrand.Location = new System.Drawing.Point(21, 12);
+            this.dvgBrand.Name = "dvgBrand";
+            this.dvgBrand.Size = new System.Drawing.Size(167, 48);
+            this.dvgBrand.TabIndex = 0;
+            this.dvgBrand.Text = "Manage Brand";
             // 
             // dataGridView1
             // 
@@ -84,35 +108,12 @@ namespace POS_Sales
             this.dataGridView1.Size = new System.Drawing.Size(984, 492);
             this.dataGridView1.TabIndex = 1;
             // 
-            // dvgBrand
-            // 
-            this.dvgBrand.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dvgBrand.ForeColor = System.Drawing.Color.White;
-            this.dvgBrand.Image = ((System.Drawing.Image)(resources.GetObject("dvgBrand.Image")));
-            this.dvgBrand.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.dvgBrand.Location = new System.Drawing.Point(21, 12);
-            this.dvgBrand.Name = "dvgBrand";
-            this.dvgBrand.Size = new System.Drawing.Size(167, 48);
-            this.dvgBrand.TabIndex = 0;
-            this.dvgBrand.Text = "Manage Brand";
-            // 
-            // btnAdd
-            // 
-            this.btnAdd.FlatAppearance.BorderSize = 0;
-            this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAdd.Image = ((System.Drawing.Image)(resources.GetObject("btnAdd.Image")));
-            this.btnAdd.Location = new System.Drawing.Point(849, 21);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(36, 26);
-            this.btnAdd.TabIndex = 1;
-            this.btnAdd.UseVisualStyleBackColor = true;
-            // 
             // Column1
             // 
             this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.Column1.HeaderText = "No";
             this.Column1.Name = "Column1";
-            this.Column1.Width = 53;
+            this.Column1.Width = 51;
             // 
             // Column2
             // 
@@ -120,7 +121,7 @@ namespace POS_Sales
             this.Column2.HeaderText = "Id";
             this.Column2.Name = "Column2";
             this.Column2.Visible = false;
-            this.Column2.Width = 44;
+            this.Column2.Width = 42;
             // 
             // Column3
             // 
@@ -132,6 +133,7 @@ namespace POS_Sales
             // 
             this.Edit.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.Edit.HeaderText = "";
+            this.Edit.Image = ((System.Drawing.Image)(resources.GetObject("Edit.Image")));
             this.Edit.Name = "Edit";
             this.Edit.Width = 5;
             // 
@@ -139,6 +141,7 @@ namespace POS_Sales
             // 
             this.Delete.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.Delete.HeaderText = "";
+            this.Delete.Image = ((System.Drawing.Image)(resources.GetObject("Delete.Image")));
             this.Delete.Name = "Delete";
             this.Delete.Width = 5;
             // 
@@ -151,7 +154,7 @@ namespace POS_Sales
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Brand";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Brand";

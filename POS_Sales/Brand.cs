@@ -17,10 +17,35 @@ namespace POS_Sales
         SqlConnection cn = new SqlConnection();
         SqlCommand cm = new SqlCommand();
         DBConnect dbcn = new DBConnect();
+        SqlDataReader dr;
         public Brand()
         {
             InitializeComponent();
             cn = new SqlConnection(dbcn.myConnection());
+            LoadBrand();
+        }
+
+        internal void LoadBrand()
+        {
+            int i = 0;
+            dvgBrand.Rows.Clear();
+            cn.Open();
+            cm = new SqlCommand("SELECT * FROM tdBrand ORDER BY brand", cn);
+            dr = cm.ExecuteReader();
+            while (dr.Read())
+            {
+                i++;
+                dvgBrand.Rows.Add(i, dr["id"].ToString(), dr["brand"].ToString());
+            }
+            dr.Close();
+            cn.Close();
+        }
+
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            BrandModule moduleForm = new BrandModule();
+            moduleForm.ShowDialog();
         }
     }
 }

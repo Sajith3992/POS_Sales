@@ -490,7 +490,7 @@ namespace POS_Sales
             this.MinimumSize = new System.Drawing.Size(1200, 700);
             this.Name = "MainForm1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Point Of Sales";
+            this.Text = "cm";
             this.panelSlide.ResumeLayout(false);
             this.panelSubSetting.ResumeLayout(false);
             this.panelSubRecord.ResumeLayout(false);

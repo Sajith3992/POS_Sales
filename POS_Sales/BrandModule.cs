@@ -17,12 +17,16 @@ namespace POS_Sales
         SqlConnection cn = new SqlConnection();
         SqlCommand cm = new SqlCommand();
         DBConnect dbcn = new DBConnect();
-        public BrandModule()
+        Brand brand;
+        public BrandModule(Brand br)
         {
             InitializeComponent();
             cn = new SqlConnection(dbcn.myConnection());
+            brand = br;
         }
-
+        public BrandModule()
+        {
+        }
         private void picClose_Click(object sender, EventArgs e)
         {
             /* close page */
@@ -43,6 +47,7 @@ namespace POS_Sales
                     cn.Close();
                     MessageBox.Show("Record has been successful saved.", "POS");
                     Clear();
+                    brand.LoadBrand();
                 }
             }
             catch(Exception ex)
