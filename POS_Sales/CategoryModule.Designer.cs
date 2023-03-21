@@ -63,6 +63,7 @@ namespace POS_Sales
             this.picclose.Size = new System.Drawing.Size(27, 24);
             this.picclose.TabIndex = 1;
             this.picclose.TabStop = false;
+            this.picclose.Click += new System.EventHandler(this.picclose_Click);
             // 
             // label1
             // 
@@ -98,6 +99,7 @@ namespace POS_Sales
             this.btncansel.TabIndex = 14;
             this.btncansel.Text = "Cansel";
             this.btncansel.UseVisualStyleBackColor = false;
+            this.btncansel.Click += new System.EventHandler(this.btncansel_Click);
             // 
             // btnupdate
             // 
@@ -112,6 +114,7 @@ namespace POS_Sales
             this.btnupdate.TabIndex = 13;
             this.btnupdate.Text = "Update";
             this.btnupdate.UseVisualStyleBackColor = false;
+            this.btnupdate.Click += new System.EventHandler(this.btnupdate_Click);
             // 
             // label2
             // 
@@ -135,6 +138,7 @@ namespace POS_Sales
             this.btnsave.TabIndex = 11;
             this.btnsave.Text = "Save";
             this.btnsave.UseVisualStyleBackColor = false;
+            this.btnsave.Click += new System.EventHandler(this.btnsave_Click);
             // 
             // txtCategory
             // 

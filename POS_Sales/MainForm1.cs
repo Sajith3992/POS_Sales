@@ -105,6 +105,7 @@ namespace POS_Sales
 
         private void buttonCatagory_Click(object sender, EventArgs e)
         {
+            openChildForm(new Catagory());
             hideSubmenu();
         }
 

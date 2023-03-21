@@ -27,7 +27,7 @@ namespace POS_Sales
             LoadBrand();
         }
 
-        //Data retrive from tdBrand to dvgBrand on Brand from
+        //Data retrive from tdBrand to dvgBrand on Brand form
         public void LoadBrand()
         {
             int i = 0;
@@ -62,6 +62,7 @@ namespace POS_Sales
                     cm = new SqlCommand("DELETE FROM tdBrand WHERE id LIKE'" + dvgBrand[1, e.RowIndex].Value.ToString() + "'", cn);
                     cm.ExecuteNonQuery();
                     cn.Close();
+                    MessageBox.Show("Brand has been successfully deleted,", "POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
             else if(colName == "Edit")
