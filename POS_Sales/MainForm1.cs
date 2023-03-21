@@ -28,6 +28,9 @@ namespace POS_Sales
           
         }
 
+
+
+
         private void button6_Click(object sender, EventArgs e)
         {
              hideSubmenu();
@@ -68,6 +71,23 @@ namespace POS_Sales
         }
         #endregion pannelSlide
 
+        private Form activateForm = null;
+        public void openChildForm(Form childForm)
+        {
+            if (activateForm != null)
+                activateForm.Close();
+            activateForm = childForm;
+            childForm.TopLevel = false;
+            childForm.FormBorderStyle = FormBorderStyle.None;
+            childForm.Dock = DockStyle.Fill;
+            labelTitle.Text = childForm.Text;
+            panelMain.Controls.Add(childForm);
+            panelMain.Tag = childForm;
+            childForm.BringToFront();
+            childForm.Show();
+            // man form ekata hadapu brand eka add karala main form ekata set karana eka 
+
+        }
         private void btnDashboard_Click(object sender, EventArgs e)
         {
 
@@ -90,6 +110,7 @@ namespace POS_Sales
 
         private void buttonBrand_Click(object sender, EventArgs e)
         {
+            openChildForm(new Brand());
             hideSubmenu();
         }
 
