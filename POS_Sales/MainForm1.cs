@@ -25,7 +25,7 @@ namespace POS_Sales
             customizeDesign();
             cn = new SqlConnection(dbcn.myConnection());
             cn.Open();
-           
+          
         }
 
         private void button6_Click(object sender, EventArgs e)

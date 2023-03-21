@@ -18,6 +18,8 @@ namespace POS_Sales
         SqlCommand cm = new SqlCommand();
         DBConnect dbcn = new DBConnect();
         SqlDataReader dr;
+
+
         public Brand()
         {
             InitializeComponent();
@@ -25,7 +27,8 @@ namespace POS_Sales
             LoadBrand();
         }
 
-        internal void LoadBrand()
+        //Data retrive from tdBrand to dvgBrand on Brand from
+        public void LoadBrand()
         {
             int i = 0;
             dvgBrand.Rows.Clear();
@@ -41,11 +44,36 @@ namespace POS_Sales
             cn.Close();
         }
 
-
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            BrandModule moduleForm = new BrandModule();
+            BrandModule moduleForm = new BrandModule(this);
             moduleForm.ShowDialog();
+        }
+
+        private void dvgBrand_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            //for update and delete brand by cell click from tdBrand
+            String colName = dvgBrand.Columns[e.ColumnIndex].Name;
+            if(colName == "Delete")
+            {
+                if(MessageBox.Show("Are you want to delete this record?","Delete Record",MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    cn.Open();
+                    cm = new SqlCommand("DELETE FROM tdBrand WHERE id LIKE'" + dvgBrand[1, e.RowIndex].Value.ToString() + "'", cn);
+                    cm.ExecuteNonQuery();
+                    cn.Close();
+                }
+            }
+            else if(colName == "Edit")
+            {
+                BrandModule brandModule = new BrandModule(this);
+                brandModule.lblid.Text = dvgBrand[1, e.RowIndex].Value.ToString();
+                brandModule.txtBrand.Text = dvgBrand[2, e.RowIndex].Value.ToString();
+                brandModule.btnsave.Enabled = false;
+                brandModule.btnupdate.Enabled = true;
+                brandModule.ShowDialog();
+            }
+            LoadBrand();
         }
     }
 }

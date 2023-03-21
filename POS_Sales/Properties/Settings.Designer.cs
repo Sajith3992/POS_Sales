@@ -33,5 +33,15 @@ namespace POS_Sales.Properties {
                 return ((string)(this["DBPOS_SalesConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-33KS9JQ;Initial Catalog=POS_Sales;Integrated Security=True")]
+        public string POS_SalesConnectionString {
+            get {
+                return ((string)(this["POS_SalesConnectionString"]));
+            }
+        }
     }
 }
