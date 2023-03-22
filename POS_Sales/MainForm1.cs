@@ -100,6 +100,7 @@ namespace POS_Sales
 
         private void buttonProductList_Click(object sender, EventArgs e)
         {
+            openChildForm(new Product());
             hideSubmenu();
         }
 

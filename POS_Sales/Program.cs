@@ -20,6 +20,7 @@ namespace POS_Sales
             Application.Run(new MainForm1());
             /* Application.Run(new BrandModule());*/
             /*Application.Run(new Brand());*/
+           
         }
     }
 }
