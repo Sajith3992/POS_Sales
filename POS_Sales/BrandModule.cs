@@ -1,0 +1,85 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Data.SqlClient;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace POS_Sales
+{
+    public partial class BrandModule : Form
+    {
+        SqlConnection cn = new SqlConnection();
+        SqlCommand cm = new SqlCommand();
+        DBConnect dbcn = new DBConnect();
+        Brand brand;
+
+
+        public BrandModule(Brand br)
+        {
+            InitializeComponent();
+            cn = new SqlConnection(dbcn.myConnection());
+            brand = br;
+        }
+
+        private void picclose_Click(object sender, EventArgs e)
+        {
+            this.Dispose();
+        }
+
+        private void btnsave_Click(object sender, EventArgs e)
+        {
+            //to insert brand name to brand table
+            try
+            {
+                if(MessageBox.Show("Are you want to save this brand?","",MessageBoxButtons.YesNo,MessageBoxIcon.Question)== DialogResult.Yes)
+                {
+                    cn.Open();
+                    cm = new SqlCommand("INSERT INTO tdBrand(brand)VALUES(@brand)",cn);
+                    cm.Parameters.AddWithValue("@brand", txtBrand.Text);
+                    cm.ExecuteNonQuery();
+                    cn.Close();
+                    MessageBox.Show("Record has been successful saved.", "POS");
+                    Clear();
+                    brand.LoadBrand();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void btncansel_Click(object sender, EventArgs e)
+        {
+            Clear();
+        }
+
+        public void Clear()
+        {
+            txtBrand.Clear();
+            btnupdate.Enabled = false;
+            btnsave.Enabled = true;
+            txtBrand.Focus();
+        }
+
+        private void btnupdate_Click(object sender, EventArgs e)
+        {
+            //update brand name
+            if(MessageBox.Show("Are you sure you want to update this brand?","Update Record!",MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                cn.Open();
+                cm = new SqlCommand("UPDATE tdBrand SET brand = @brand WHERE id LIKE'" + lblid.Text + "'", cn);
+                cm.Parameters.AddWithValue("@brand", txtBrand.Text);
+                cm.ExecuteNonQuery();
+                cn.Close();
+                MessageBox.Show("Brand has been Successfully updated.", "POS");
+                this.Dispose(); // to close this form after update data
+            }
+        }
+    }
+}
