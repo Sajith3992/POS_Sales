@@ -16,7 +16,11 @@ namespace POS_Sales
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            /* Application.Run(new BrandModule());*/
+            Application.Run(new MainForm1());
+            /* Application.Run(new BrandModule());*/
+            /*Application.Run(new Brand());*/
+           
         }
     }
 }
