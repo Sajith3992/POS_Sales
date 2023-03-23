@@ -128,6 +128,7 @@ namespace POS_Sales
 
         private void buttonSupplier_Click(object sender, EventArgs e)
         {
+            openChildForm(new Supplier());
             hideSubmenu();
         }
 
@@ -153,6 +154,7 @@ namespace POS_Sales
 
         private void buttonUser_Click(object sender, EventArgs e)
         {
+            openChildForm(new UserAccount());
             hideSubmenu();
         }
 
