@@ -24,12 +24,39 @@ namespace POS_Sales
             InitializeComponent();
             cn = new SqlConnection(dbcn.myConnection());
             loadSupplier();
+            GetRefNo();
         }
+
+        public void GetRefNo()
+        {
+            Random rnd = new Random();
+            txtRefNo.Clear();
+            txtRefNo.Text += rnd.Next();
+        }
+
+
         public void loadSupplier()
         {
             cbSupplier.Items.Clear();
             cbSupplier.DataSource = dbcn.getTable("SELECT * FROM tdSupplier");
             cbSupplier.DisplayMember = "supplier";
+        }
+
+        public void LoadStock()
+        {
+            int i = 0;
+            dvgStockIn.Rows.Clear();
+            cn.Open();
+            cm = new SqlCommand("SELECT * FROM vwStockIn WHERE refno LIKE '"+txtRefNo.Text+ "'AND status LIKE 'Pending'",cn);
+            dr = cm.ExecuteReader();
+            while (dr.Read())
+            {
+                i++;
+                dvgStockIn.Rows.Add(i, dr[0].ToString(), dr[1].ToString(), dr[2].ToString(), dr[3].ToString(), dr[4].ToString(), dr[5].ToString(), dr[6].ToString(), dr[7].ToString());
+
+            }
+            dr.Close();
+            cn.Close();
         }
 
         private void cbSupplier_SelectedIndexChanged(object sender, EventArgs e)
@@ -51,6 +78,73 @@ namespace POS_Sales
         private void cbSupplier_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = true;
+        }
+
+        private void LinGenarate_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            GetRefNo();
+        }
+
+        private void LinkProduct_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            ProductStockIn productStock = new ProductStockIn(this);
+            productStock.ShowDialog();
+      
+        }
+
+        private void btnEntry_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if(dvgStockIn.Rows.Count > 0)
+                {
+                    if(MessageBox.Show("Are you sure want to save this record", stitle,MessageBoxButtons.YesNo,MessageBoxIcon.Question) == DialogResult.Yes)
+                    {
+                        for(int i=0; i<dvgStockIn.Rows.Count; i++)
+                        {
+                            //update product quantity
+                            cn.Open();
+                            cm = new SqlCommand("Update tdProduct SET qty = qty + " + int.Parse(dvgStockIn.Rows[i].Cells[5].Value.ToString()) + "WHERE pcode LIKE '" + dvgStockIn.Rows[i].Cells[3].Value.ToString() + "'", cn);
+                            cm.ExecuteNonQuery();
+                            cn.Close();
+
+                            //update stockin quantity
+                            cn.Open();
+                            cm = new SqlCommand("UPDATE tdStock SET qty = qty + " + int.Parse(dvgStockIn.Rows[i].Cells[5].Value.ToString()) + ",status='Done' WHERE id LIKE '" + dvgStockIn.Rows[i].Cells[1].Value.ToString() + "'", cn);
+                            cm.ExecuteNonQuery();
+                            cn.Close();
+                        }
+                        Clear();
+                        LoadStock();
+                    }
+                }
+            }catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message,stitle , MessageBoxButtons.OK,MessageBoxIcon.Warning);
+            }
+        }
+        public void Clear()
+        {
+            txtRefNo.Clear();
+            txtStockInBy.Clear();
+            dtStockIn.Value = DateTime.Now;
+        }
+
+        private void dvgStockIn_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            string colName = dvgStockIn.Columns[e.ColumnIndex].Name;
+            if(colName == "Delete")
+            {
+                if(MessageBox.Show("Remove this item?",stitle,MessageBoxButtons.YesNo,MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    cn.Open();
+                    cm = new SqlCommand("DELETE FROM tdStock WHERE id='" + dvgStockIn.Rows[e.RowIndex].Cells[1].Value.ToString() + "'", cn);
+                    cm.ExecuteNonQuery();
+                    cn.Close();
+                    MessageBox.Show("Item has been sucessfully removed", stitle, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    LoadStock();
+                }
+            }
         }
     }
 }

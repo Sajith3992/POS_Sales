@@ -24,8 +24,9 @@ namespace POS_Sales
         {
             InitializeComponent();
             cn = new SqlConnection(dbcn.myConnection());
-            LoadProduct();
             stockIn = stk;
+            LoadProduct();
+            
         }
 
         private void btnclose_Click(object sender, EventArgs e)
@@ -44,7 +45,7 @@ namespace POS_Sales
             {
                 //display data row
                 i++;
-                dvgProduct.Rows.Add(i, dr[0].ToString(), dr[1].ToString(), dr[2].ToString(), dr[3].ToString();
+                dvgProduct.Rows.Add(i, dr[0].ToString(), dr[1].ToString(), dr[2].ToString());
 
             }
             dr.Close();
@@ -56,20 +57,29 @@ namespace POS_Sales
             string colName = dvgProduct.Columns[e.ColumnIndex].Name;
             if(colName == "Select")
             {
+                if(stockIn.txtStockInBy.Text == string.Empty)
+                {
+                    MessageBox.Show("Please enter stock in by name", stitle, MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    stockIn.txtStockInBy.Focus();
+                    this.Dispose();
+                  
+                }
+
                 if(MessageBox.Show("Add this item?",stitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question)== DialogResult.Yes)
                 {
                     try
                     {
                         cn.Open();
-                        cm = new SqlCommand("INSERT INTO tdStockIn(refno,pcode,sdate,stockKinby,supplierid)VALUES(@refno,@pcode,@sdate,@stockKinby,@supplierid)", cn);
+                        cm = new SqlCommand("INSERT INTO tdStock(refno, pcode, sdate, stockinby, supplieid)VALUES(@refno, @pcode, @sdate, @stockinby, @supplieid)", cn);
                         cm.Parameters.AddWithValue("@refno", stockIn.txtRefNo.Text);
                         cm.Parameters.AddWithValue("@pcode", dvgProduct.Rows[e.RowIndex].Cells[1].Value.ToString());
                         cm.Parameters.AddWithValue("@sdate", stockIn.dtStockIn.Value);
                         cm.Parameters.AddWithValue("@stockinby", stockIn.txtStockInBy.Text);
-                        cm.Parameters.AddWithValue("@supplierid", stockIn.lblId.Text);
+                        cm.Parameters.AddWithValue("@supplieid", stockIn.lblId.Text);
                         cm.ExecuteNonQuery();
                         cn.Close();
-
+                        stockIn.LoadStock();
+                        MessageBox.Show("Successfullt added", stitle, MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     catch(Exception ex)
                     {
@@ -77,6 +87,11 @@ namespace POS_Sales
                     }
                 }
             }
+        }
+
+        private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+            LoadProduct();
         }
     }
 }

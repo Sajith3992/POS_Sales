@@ -214,6 +214,7 @@ namespace POS_Sales
             this.txtSearch.WaterMark = "Search here ....";
             this.txtSearch.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.txtSearch.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
             // label1
             // 
@@ -241,6 +242,7 @@ namespace POS_Sales
             this.Name = "LookUpProduct";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "LookUpProduct";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.LookUpProduct_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.dvgProduct)).EndInit();
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);

@@ -17,7 +17,7 @@ namespace POS_Sales
         SqlCommand cm = new SqlCommand();
         DBConnect dbcn = new DBConnect();
         SqlDataReader dr;
-        string stitle = "Point Of Sales";
+       
         Cashier cashier;
 
         public LookUpProduct(Cashier cash)
@@ -60,6 +60,19 @@ namespace POS_Sales
                 Qty qty = new Qty(cashier);
                 qty.ProductDetails(dvgProduct.Rows[e.RowIndex].Cells[1].Value.ToString(), double.Parse(dvgProduct.Rows[e.RowIndex].Cells[6].Value.ToString()), cashier.lblTransNo.Text, int.Parse(dvgProduct.Rows[e.RowIndex].Cells[7].Value.ToString()));
                 qty.ShowDialog();
+            }
+        }
+
+        private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+            LoadProduct();
+        }
+
+        private void LookUpProduct_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.Escape)
+            {
+                this.Dispose();
             }
         }
     }

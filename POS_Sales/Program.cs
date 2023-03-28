@@ -16,12 +16,7 @@ namespace POS_Sales
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            /* Application.Run(new BrandModule());*/
-            /* Application.Run(new MainForm1());*/
-            /* Application.Run(new BrandModule());*/
-            /*Application.Run(new Brand());*/
-            /*Application.Run(new Cashier());*/
-            Application.Run(new StockIn());
+            Application.Run(new Cashier());
            
         }
     }

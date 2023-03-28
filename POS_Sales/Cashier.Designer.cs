@@ -55,6 +55,7 @@ namespace POS_Sales
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.lblname = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.txtQty = new System.Windows.Forms.TextBox();
             this.lblTimer = new System.Windows.Forms.Label();
             this.lblVat = new System.Windows.Forms.Label();
             this.lblTax = new System.Windows.Forms.Label();
@@ -349,6 +350,7 @@ namespace POS_Sales
             // 
             // panel5
             // 
+            this.panel5.Controls.Add(this.txtQty);
             this.panel5.Controls.Add(this.lblTimer);
             this.panel5.Controls.Add(this.lblVat);
             this.panel5.Controls.Add(this.lblTax);
@@ -371,6 +373,15 @@ namespace POS_Sales
             this.panel5.Size = new System.Drawing.Size(220, 611);
             this.panel5.TabIndex = 3;
             this.panel5.Paint += new System.Windows.Forms.PaintEventHandler(this.panel5_Paint);
+            // 
+            // txtQty
+            // 
+            this.txtQty.Location = new System.Drawing.Point(159, 207);
+            this.txtQty.Name = "txtQty";
+            this.txtQty.Size = new System.Drawing.Size(49, 26);
+            this.txtQty.TabIndex = 16;
+            this.txtQty.Text = "1";
+            this.txtQty.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // lblTimer
             // 
@@ -463,6 +474,7 @@ namespace POS_Sales
             this.txtBarcode.Name = "txtBarcode";
             this.txtBarcode.Size = new System.Drawing.Size(134, 26);
             this.txtBarcode.TabIndex = 6;
+            this.txtBarcode.TextChanged += new System.EventHandler(this.txtBarcode_TextChanged);
             // 
             // label6
             // 
@@ -727,7 +739,6 @@ namespace POS_Sales
         private System.Windows.Forms.Label lblvatable;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox txtBarcode;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label lblDate;
         private System.Windows.Forms.Label label5;
@@ -735,5 +746,7 @@ namespace POS_Sales
         public System.Windows.Forms.Label lblUsername;
         private System.Windows.Forms.Label lblVaat;
         public System.Windows.Forms.Label lblTransNo;
+        private System.Windows.Forms.TextBox txtQty;
+        public System.Windows.Forms.TextBox txtBarcode;
     }
 }

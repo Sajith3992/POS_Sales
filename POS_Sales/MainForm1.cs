@@ -30,9 +30,10 @@ namespace POS_Sales
 
 
 
-
+        //stock Entry
         private void button6_Click(object sender, EventArgs e)
         {
+            openChildForm(new StockIn());
              hideSubmenu();
         }
         #region pannelSlide
