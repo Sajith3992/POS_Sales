@@ -178,6 +178,7 @@ namespace POS_Sales
             // btnClear
             // 
             this.btnClear.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnClear.Enabled = false;
             this.btnClear.FlatAppearance.BorderSize = 0;
             this.btnClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClear.ForeColor = System.Drawing.Color.White;
@@ -196,6 +197,7 @@ namespace POS_Sales
             // btnSettle
             // 
             this.btnSettle.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnSettle.Enabled = false;
             this.btnSettle.FlatAppearance.BorderSize = 0;
             this.btnSettle.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSettle.ForeColor = System.Drawing.Color.White;
@@ -214,6 +216,7 @@ namespace POS_Sales
             // btnDiscount
             // 
             this.btnDiscount.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnDiscount.Enabled = false;
             this.btnDiscount.FlatAppearance.BorderSize = 0;
             this.btnDiscount.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDiscount.ForeColor = System.Drawing.Color.White;
@@ -719,8 +722,6 @@ namespace POS_Sales
         private System.Windows.Forms.PictureBox picclose;
         private System.Windows.Forms.Panel panelSlide;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label lblDisplayTotal;
-        private System.Windows.Forms.DataGridView dvgCash;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
@@ -749,5 +750,7 @@ namespace POS_Sales
         public System.Windows.Forms.Label lblTransNo;
         private System.Windows.Forms.TextBox txtQty;
         public System.Windows.Forms.TextBox txtBarcode;
+        public System.Windows.Forms.DataGridView dvgCash;
+        public System.Windows.Forms.Label lblDisplayTotal;
     }
 }

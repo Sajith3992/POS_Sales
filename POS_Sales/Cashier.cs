@@ -73,11 +73,24 @@ namespace POS_Sales
         private void btnSettle_Click(object sender, EventArgs e)
         {
             slide(btnSettle);
+            Settle settle = new Settle(this);
+            settle.txtSale.Text = lblDisplayTotal.Text;
+            settle.ShowDialog();
         }
 
         private void btnClear_Click(object sender, EventArgs e)
         {
             slide(btnClear);
+            if(MessageBox.Show("Remove all items from cart?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                cn.Open();
+                cm = new SqlCommand("Delete from tbCart where transno like '" + lblTransNo.Text + "'", cn);
+                cm.ExecuteNonQuery();
+                cn.Close();
+                MessageBox.Show("All Items has been successfully removed", "Remove item", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                LoadCart();
+            }
         }
 
         private void btnDsale_Click(object sender, EventArgs e)
@@ -106,6 +119,7 @@ namespace POS_Sales
         {
             try
             {
+                Boolean hascart = false;
                 int i = 0;
                 double total = 0;
                 double discount = 0;
@@ -120,12 +134,25 @@ namespace POS_Sales
                     total += Convert.ToDouble(dr["total"].ToString());
                     discount += Convert.ToDouble(dr["disc"].ToString());
                     dvgCash.Rows.Add(i, dr["id"].ToString(), dr["pcode"].ToString(), dr["pdesc"].ToString(), dr["price"].ToString(), dr["qty"].ToString(), dr["disc"].ToString(), double.Parse(dr["total"].ToString()).ToString("#,##0.00"));//
+                    hascart = true;
                 }
                 dr.Close();
                 cn.Close();
                 lblSaleTotal.Text = total.ToString("#,##0.00");
                 lblDiscount.Text = discount.ToString("#,##0.00");
                 GetCartTotal();
+                if (hascart)
+                {
+                    btnClear.Enabled = true;
+                    btnSettle.Enabled = true;
+                    btnDiscount.Enabled = true;
+                }
+                else
+                {
+                    btnClear.Enabled = false;
+                    btnSettle.Enabled = false;
+                    btnDiscount.Enabled = false;
+                }
             }
             catch(Exception ex)
             {
@@ -189,7 +216,56 @@ namespace POS_Sales
 
         private void dvgCash_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            string colName = dvgCash.Columns[e.ColumnIndex].Name;
 
+            if (colName == "Delete")
+            {
+
+                if (MessageBox.Show("Remove this item", "Remove Item", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    dbcn.ExecuteQuery("Delete from tbCart where id like '" + dvgCash.Rows[e.RowIndex].Cells[i].Value.ToString() + "'");
+                    MessageBox.Show("Items has been successfully removed", "Remove item", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    LoadCart();
+                }
+                else if(colName == "colAdd")
+                {
+                    int i = 0;
+                    cn.Open();
+                    cm = new SqlCommand("SELECT SUM(qty)as qty FROM tdProduct WHERE pcode LIKE '" + dvgCash.Rows[e.RowIndex].Cells[2].Value.ToString() + "'GROUP BY pcode", cn);
+                    i = int.Parse(cm.ExecuteScalar().ToString());
+                    cn.Close();
+
+                    if (int.Parse(dvgCash.Rows[e.RowIndex].Cells[5].Value.ToString())<i)
+                    {
+                        dbcn.ExecuteQuery("UPDATE tbCart SET qty = qty + " +int.Parse(txtQty.Text)+ "WHERE transno LIKE '" +lblTransNo.Text + "'AND pcode LIKE '"+ dvgCash.Rows[e.RowIndex].Cells[2].Value.ToString() + "'");
+                        LoadCart();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Remaining qty on hand is " + i + "!", "Out of Stock", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+                }
+                else if(colName == "colReduce")
+                {
+                    int i = 0;
+                    cn.Open();
+                    cm = new SqlCommand("SELECT SUM(qty)as qty FROM tbCart WHERE pcode LIKE '" + dvgCash.Rows[e.RowIndex].Cells[2].Value.ToString() + "'GROUP BY pcode", cn);
+                    i = int.Parse(cm.ExecuteScalar().ToString());
+                    cn.Close();
+
+                    if (i > 1)
+                    {
+                        dbcn.ExecuteQuery("UPDATE tbCart SET qty = qty - " + int.Parse(txtQty.Text) + "WHERE transno LIKE '" + lblTransNo.Text + "'AND pcode LIKE '" + dvgCash.Rows[e.RowIndex].Cells[2].Value.ToString() + "'");
+                        LoadCart();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Remaining qty on cart is " + i + "!", "Warnig", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+                }
+            }
         }
 
         private void txtBarcode_TextChanged(object sender, EventArgs e)
@@ -255,7 +331,7 @@ namespace POS_Sales
                 {
                     if(qty <(int.Parse(txtQty.Text)+cart_qty))
                     {
-                        MessageBox.Show("Unable to procced. Remaining qty on hand is" + qty, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        MessageBox.Show("Unable to procced. Remaining quantity on hand is" + qty, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         return;
                     }
                     cn.Open();

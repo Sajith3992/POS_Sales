@@ -5,6 +5,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace POS_Sales
 {
@@ -30,5 +31,22 @@ namespace POS_Sales
             adapter.Fill(table);
             return table;
         }
+
+        public void ExecuteQuery(String sql)
+        {
+            try
+            {
+                cn.ConnectionString = myConnection();
+                cn.Open();
+                cm = new SqlCommand(sql, cn);
+                cm.ExecuteNonQuery();
+                cn.Close();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
     }
 }
