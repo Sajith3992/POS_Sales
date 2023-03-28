@@ -96,6 +96,8 @@ namespace POS_Sales
         private void btnDsale_Click(object sender, EventArgs e)
         {
             slide(btnDsale);
+            DailySale dailySale = new DailySale();
+            dailySale.ShowDialog();
         }
 
         private void btnPass_Click(object sender, EventArgs e)
