@@ -62,7 +62,12 @@ namespace POS_Sales
 
         private void btnDiscount_Click(object sender, EventArgs e)
         {
+
             slide(btnDiscount);
+            Discount discount = new Discount(this);
+            discount.lbId.Text = id;
+            discount.txtTotalPrice.Text = price;
+            discount.ShowDialog();
         }
 
         private void btnSettle_Click(object sender, EventArgs e)
@@ -287,6 +292,13 @@ namespace POS_Sales
             {
                 MessageBox.Show(ex.Message, stitle);
             }
+        }
+
+        private void dvgCash_SelectionChanged(object sender, EventArgs e)
+        {
+            int i = dvgCash.CurrentRow.Index;
+            id = dvgCash[i, 1].Value.ToString();
+            price = dvgCash[i, 7].Value.ToString();
         }
     }
 }

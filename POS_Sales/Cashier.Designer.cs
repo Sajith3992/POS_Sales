@@ -572,6 +572,7 @@ namespace POS_Sales
             this.dvgCash.Size = new System.Drawing.Size(756, 611);
             this.dvgCash.TabIndex = 4;
             this.dvgCash.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dvgCash_CellContentClick);
+            this.dvgCash.SelectionChanged += new System.EventHandler(this.dvgCash_SelectionChanged);
             // 
             // Column1
             // 

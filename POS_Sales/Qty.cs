@@ -96,7 +96,7 @@ namespace POS_Sales
                         cm.Parameters.AddWithValue("@transno", transno);
                         cm.Parameters.AddWithValue("@pcode", pcode);
                         cm.Parameters.AddWithValue("@price", price);
-                        cm.Parameters.AddWithValue("@qty", qty);
+                        cm.Parameters.AddWithValue("@qty", int.Parse(txtQty.Text));
                         cm.Parameters.AddWithValue("@sdate", DateTime.Now);
                         cm.Parameters.AddWithValue("@cashier", cashier.lblUsername.Text);
                         cm.ExecuteNonQuery();
@@ -115,4 +115,4 @@ namespace POS_Sales
         }
         }
     }
-}
+
