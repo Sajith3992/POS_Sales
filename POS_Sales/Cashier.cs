@@ -106,6 +106,18 @@ namespace POS_Sales
         private void btnLogout_Click(object sender, EventArgs e)
         {
             slide(btnLogout);
+            if(dvgCash.Rows.Count > 0)
+            {
+                MessageBox.Show("Unable to logout.Please cansel the transaction.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            if (MessageBox.Show("Logout Application?", "Logout", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                this.Hide();
+                Login login = new Login();
+                login.ShowDialog();
+
+            }
         }
 
         private void panel5_Paint(object sender, PaintEventArgs e)
@@ -223,7 +235,7 @@ namespace POS_Sales
 
                 if (MessageBox.Show("Remove this item", "Remove Item", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    dbcn.ExecuteQuery("Delete from tbCart where id like '" + dvgCash.Rows[e.RowIndex].Cells[i].Value.ToString() + "'");
+                    dbcn.ExecuteQuery("Delete from tbCart where id like '" + dvgCash.Rows[e.RowIndex].Cells[1].Value.ToString() + "'");
                     MessageBox.Show("Items has been successfully removed", "Remove item", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     LoadCart();
                 }

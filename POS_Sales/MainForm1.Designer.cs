@@ -532,11 +532,11 @@ namespace POS_Sales
         private System.Windows.Forms.Panel panelSubRecord;
         private System.Windows.Forms.Button buttonPosRecord;
         private System.Windows.Forms.Button buttonSaleHistory;
-        private System.Windows.Forms.Label lblName;
-        private System.Windows.Forms.Label labelUserName;
-        private System.Windows.Forms.Label labelRole;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label labelTitle;
+        public System.Windows.Forms.Label labelUserName;
+        public System.Windows.Forms.Label lblName;
+        public System.Windows.Forms.Label labelRole;
     }
 }
 

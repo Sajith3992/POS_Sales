@@ -73,6 +73,7 @@ namespace POS_Sales
             this.label2 = new System.Windows.Forms.Label();
             this.lblDisplayTotal = new System.Windows.Forms.Label();
             this.dvgCash = new System.Windows.Forms.DataGridView();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -84,7 +85,6 @@ namespace POS_Sales
             this.colAdd = new System.Windows.Forms.DataGridViewImageColumn();
             this.colReduce = new System.Windows.Forms.DataGridViewImageColumn();
             this.Delete = new System.Windows.Forms.DataGridViewImageColumn();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -577,6 +577,11 @@ namespace POS_Sales
             this.dvgCash.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dvgCash_CellContentClick);
             this.dvgCash.SelectionChanged += new System.EventHandler(this.dvgCash_SelectionChanged);
             // 
+            // timer1
+            // 
+            this.timer1.Enabled = true;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
             // Column1
             // 
             this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
@@ -589,6 +594,7 @@ namespace POS_Sales
             this.Column9.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.Column9.HeaderText = "Id";
             this.Column9.Name = "Column9";
+            this.Column9.Visible = false;
             this.Column9.Width = 47;
             // 
             // Column2
@@ -664,11 +670,6 @@ namespace POS_Sales
             this.Delete.Name = "Delete";
             this.Delete.Width = 5;
             // 
-            // timer1
-            // 
-            this.timer1.Enabled = true;
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
             // Cashier
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -718,21 +719,9 @@ namespace POS_Sales
         private System.Windows.Forms.Button btnDiscount;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.Label lblname;
         private System.Windows.Forms.PictureBox picclose;
         private System.Windows.Forms.Panel panelSlide;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
-        private System.Windows.Forms.DataGridViewImageColumn colAdd;
-        private System.Windows.Forms.DataGridViewImageColumn colReduce;
-        private System.Windows.Forms.DataGridViewImageColumn Delete;
         private System.Windows.Forms.Label lblTimer;
         private System.Windows.Forms.Label lblVat;
         private System.Windows.Forms.Label lblTax;
@@ -752,5 +741,17 @@ namespace POS_Sales
         public System.Windows.Forms.TextBox txtBarcode;
         public System.Windows.Forms.DataGridView dvgCash;
         public System.Windows.Forms.Label lblDisplayTotal;
+        public System.Windows.Forms.Label lblname;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
+        private System.Windows.Forms.DataGridViewImageColumn colAdd;
+        private System.Windows.Forms.DataGridViewImageColumn colReduce;
+        private System.Windows.Forms.DataGridViewImageColumn Delete;
     }
 }
