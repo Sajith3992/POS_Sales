@@ -91,6 +91,12 @@
     <Compile Include="CategoryModule.Designer.cs">
       <DependentUpon>CategoryModule.cs</DependentUpon>
     </Compile>
+    <Compile Include="ChangePassword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ChangePassword.Designer.cs">
+      <DependentUpon>ChangePassword.cs</DependentUpon>
+    </Compile>
     <Compile Include="DailySale.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -121,6 +127,18 @@
     </Compile>
     <Compile Include="MainForm1.Designer.cs">
       <DependentUpon>MainForm1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="New Cashier.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="New Cashier.Designer.cs">
+      <DependentUpon>New Cashier.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewCashier.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NewCashier.Designer.cs">
+      <DependentUpon>NewCashier.cs</DependentUpon>
     </Compile>
     <Compile Include="POS_SalesDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -183,6 +201,12 @@
     <Compile Include="UserAccount.Designer.cs">
       <DependentUpon>UserAccount.cs</DependentUpon>
     </Compile>
+    <Compile Include="Void.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Void.Designer.cs">
+      <DependentUpon>Void.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Brand.resx">
       <DependentUpon>Brand.cs</DependentUpon>
     </EmbeddedResource>
@@ -201,6 +225,9 @@
     <EmbeddedResource Include="CategoryModule.resx">
       <DependentUpon>CategoryModule.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ChangePassword.resx">
+      <DependentUpon>ChangePassword.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="DailySale.resx">
       <DependentUpon>DailySale.cs</DependentUpon>
     </EmbeddedResource>
@@ -215,6 +242,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm1.resx">
       <DependentUpon>MainForm1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="New Cashier.resx">
+      <DependentUpon>New Cashier.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NewCashier.resx">
+      <DependentUpon>NewCashier.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Product.resx">
       <DependentUpon>Product.cs</DependentUpon>
@@ -251,6 +284,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserAccount.resx">
       <DependentUpon>UserAccount.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Void.resx">
+      <DependentUpon>Void.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="POS_SalesDataSet.xsc">

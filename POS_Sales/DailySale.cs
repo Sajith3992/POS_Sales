@@ -17,11 +17,13 @@ namespace POS_Sales
         SqlCommand cm = new SqlCommand();
         DBConnect dbcn = new DBConnect();
         SqlDataReader dr;
+        public string solduser;
 
         public DailySale()
         {
             InitializeComponent();
             cn = new SqlConnection(dbcn.myConnection());
+            LoadCashier();
         }
 
         private void picclose_Click(object sender, EventArgs e)
@@ -93,6 +95,25 @@ namespace POS_Sales
             if(e.KeyCode == Keys.Escape)
             {
                 this.Dispose();
+            }
+        }
+
+        private void dvgSold_CellContentClick(object sender, DataGridViewCellEventArgs e)//5.25
+        {
+            string colName = dvgSold.Columns[e.ColumnIndex].Name;
+            if(colName == "Cancel")
+            {
+                CancelOrder cancelOrder = new CancelOrder(this);
+                cancelOrder.txtid.Text = dvgSold.Rows[e.RowIndex].Cells[1].Value.ToString();
+                cancelOrder.txtTransno.Text = dvgSold.Rows[e.RowIndex].Cells[2].Value.ToString();
+                cancelOrder.txtPcode.Text = dvgSold.Rows[e.RowIndex].Cells[3].Value.ToString();
+                cancelOrder.txtDesc.Text = dvgSold.Rows[e.RowIndex].Cells[4].Value.ToString();
+                cancelOrder.txtPrice.Text = dvgSold.Rows[e.RowIndex].Cells[5].Value.ToString();
+                cancelOrder.txtQty.Text = dvgSold.Rows[e.RowIndex].Cells[6].Value.ToString();
+                cancelOrder.txtDiscount.Text = dvgSold.Rows[e.RowIndex].Cells[7].Value.ToString();
+                cancelOrder.txtTotal.Text = dvgSold.Rows[e.RowIndex].Cells[8].Value.ToString();
+                cancelOrder.txtCanceledBy.Text = solduser;
+                cancelOrder.ShowDialog();
             }
         }
     }

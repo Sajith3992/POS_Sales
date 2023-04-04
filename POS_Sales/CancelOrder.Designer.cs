@@ -34,35 +34,37 @@ namespace POS_Sales
             this.picclose = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.txtid = new System.Windows.Forms.TextBox();
+            this.txtPcode = new System.Windows.Forms.TextBox();
+            this.txtDesc = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.txtQty = new System.Windows.Forms.TextBox();
+            this.txtPrice = new System.Windows.Forms.TextBox();
+            this.txtTransno = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.textBox8 = new System.Windows.Forms.TextBox();
+            this.txtDiscount = new System.Windows.Forms.TextBox();
+            this.txtTotal = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
-            this.textBox10 = new System.Windows.Forms.TextBox();
-            this.textBox11 = new System.Windows.Forms.TextBox();
+            this.txtCanceledBy = new System.Windows.Forms.TextBox();
+            this.txtValidBy = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cboInventory = new System.Windows.Forms.ComboBox();
             this.label11 = new System.Windows.Forms.Label();
-            this.textBox9 = new System.Windows.Forms.TextBox();
-            this.textBox12 = new System.Windows.Forms.TextBox();
+            this.txtReason = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
+            this.btnCancelOrder = new System.Windows.Forms.Button();
+            this.udCancelQty = new System.Windows.Forms.NumericUpDown();
             panel1 = new System.Windows.Forms.Panel();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picclose)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.udCancelQty)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -80,11 +82,13 @@ namespace POS_Sales
             // 
             this.picclose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.picclose.Image = ((System.Drawing.Image)(resources.GetObject("picclose.Image")));
-            this.picclose.Location = new System.Drawing.Point(867, 7);
+            this.picclose.Location = new System.Drawing.Point(862, 3);
             this.picclose.Name = "picclose";
-            this.picclose.Size = new System.Drawing.Size(27, 24);
+            this.picclose.Size = new System.Drawing.Size(32, 26);
+            this.picclose.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.picclose.TabIndex = 1;
             this.picclose.TabStop = false;
+            this.picclose.Click += new System.EventHandler(this.picclose_Click);
             // 
             // label1
             // 
@@ -106,27 +110,30 @@ namespace POS_Sales
             this.label2.TabIndex = 14;
             this.label2.Text = "Id :";
             // 
-            // textBox1
+            // txtid
             // 
-            this.textBox1.Location = new System.Drawing.Point(155, 100);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(231, 26);
-            this.textBox1.TabIndex = 15;
+            this.txtid.Enabled = false;
+            this.txtid.Location = new System.Drawing.Point(155, 100);
+            this.txtid.Name = "txtid";
+            this.txtid.Size = new System.Drawing.Size(231, 26);
+            this.txtid.TabIndex = 15;
             // 
-            // textBox2
+            // txtPcode
             // 
-            this.textBox2.Location = new System.Drawing.Point(155, 145);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(231, 26);
-            this.textBox2.TabIndex = 16;
+            this.txtPcode.Enabled = false;
+            this.txtPcode.Location = new System.Drawing.Point(155, 145);
+            this.txtPcode.Name = "txtPcode";
+            this.txtPcode.Size = new System.Drawing.Size(231, 26);
+            this.txtPcode.TabIndex = 16;
             // 
-            // textBox3
+            // txtDesc
             // 
-            this.textBox3.Location = new System.Drawing.Point(155, 192);
-            this.textBox3.Multiline = true;
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(231, 66);
-            this.textBox3.TabIndex = 17;
+            this.txtDesc.Enabled = false;
+            this.txtDesc.Location = new System.Drawing.Point(155, 192);
+            this.txtDesc.Multiline = true;
+            this.txtDesc.Name = "txtDesc";
+            this.txtDesc.Size = new System.Drawing.Size(231, 66);
+            this.txtDesc.TabIndex = 17;
             // 
             // label3
             // 
@@ -164,26 +171,29 @@ namespace POS_Sales
             this.label6.TabIndex = 24;
             this.label6.Text = "Price  :";
             // 
-            // textBox4
+            // txtQty
             // 
-            this.textBox4.Location = new System.Drawing.Point(543, 192);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(168, 26);
-            this.textBox4.TabIndex = 23;
+            this.txtQty.Enabled = false;
+            this.txtQty.Location = new System.Drawing.Point(543, 192);
+            this.txtQty.Name = "txtQty";
+            this.txtQty.Size = new System.Drawing.Size(168, 26);
+            this.txtQty.TabIndex = 23;
             // 
-            // textBox5
+            // txtPrice
             // 
-            this.textBox5.Location = new System.Drawing.Point(543, 145);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(342, 26);
-            this.textBox5.TabIndex = 22;
+            this.txtPrice.Enabled = false;
+            this.txtPrice.Location = new System.Drawing.Point(543, 145);
+            this.txtPrice.Name = "txtPrice";
+            this.txtPrice.Size = new System.Drawing.Size(342, 26);
+            this.txtPrice.TabIndex = 22;
             // 
-            // textBox6
+            // txtTransno
             // 
-            this.textBox6.Location = new System.Drawing.Point(543, 100);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(342, 26);
-            this.textBox6.TabIndex = 21;
+            this.txtTransno.Enabled = false;
+            this.txtTransno.Location = new System.Drawing.Point(543, 100);
+            this.txtTransno.Name = "txtTransno";
+            this.txtTransno.Size = new System.Drawing.Size(342, 26);
+            this.txtTransno.TabIndex = 21;
             // 
             // label7
             // 
@@ -194,19 +204,21 @@ namespace POS_Sales
             this.label7.TabIndex = 20;
             this.label7.Text = "Transaction No :";
             // 
-            // textBox7
+            // txtDiscount
             // 
-            this.textBox7.Location = new System.Drawing.Point(729, 192);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(156, 26);
-            this.textBox7.TabIndex = 26;
+            this.txtDiscount.Enabled = false;
+            this.txtDiscount.Location = new System.Drawing.Point(729, 192);
+            this.txtDiscount.Name = "txtDiscount";
+            this.txtDiscount.Size = new System.Drawing.Size(156, 26);
+            this.txtDiscount.TabIndex = 26;
             // 
-            // textBox8
+            // txtTotal
             // 
-            this.textBox8.Location = new System.Drawing.Point(543, 232);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(342, 26);
-            this.textBox8.TabIndex = 27;
+            this.txtTotal.Enabled = false;
+            this.txtTotal.Location = new System.Drawing.Point(543, 232);
+            this.txtTotal.Name = "txtTotal";
+            this.txtTotal.Size = new System.Drawing.Size(342, 26);
+            this.txtTotal.TabIndex = 27;
             // 
             // label8
             // 
@@ -257,19 +269,20 @@ namespace POS_Sales
             this.label13.TabIndex = 35;
             this.label13.Text = "Cancelled By :";
             // 
-            // textBox10
+            // txtCanceledBy
             // 
-            this.textBox10.Location = new System.Drawing.Point(155, 358);
-            this.textBox10.Name = "textBox10";
-            this.textBox10.Size = new System.Drawing.Size(230, 26);
-            this.textBox10.TabIndex = 33;
+            this.txtCanceledBy.Enabled = false;
+            this.txtCanceledBy.Location = new System.Drawing.Point(155, 358);
+            this.txtCanceledBy.Name = "txtCanceledBy";
+            this.txtCanceledBy.Size = new System.Drawing.Size(230, 26);
+            this.txtCanceledBy.TabIndex = 33;
             // 
-            // textBox11
+            // txtValidBy
             // 
-            this.textBox11.Location = new System.Drawing.Point(155, 313);
-            this.textBox11.Name = "textBox11";
-            this.textBox11.Size = new System.Drawing.Size(230, 26);
-            this.textBox11.TabIndex = 32;
+            this.txtValidBy.Location = new System.Drawing.Point(155, 313);
+            this.txtValidBy.Name = "txtValidBy";
+            this.txtValidBy.Size = new System.Drawing.Size(230, 26);
+            this.txtValidBy.TabIndex = 32;
             // 
             // label14
             // 
@@ -280,48 +293,71 @@ namespace POS_Sales
             this.label14.TabIndex = 31;
             this.label14.Text = "Valid By :";
             // 
-            // comboBox1
+            // cboInventory
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.cboInventory.FormattingEnabled = true;
+            this.cboInventory.Items.AddRange(new object[] {
             "Yes",
             "No"});
-            this.comboBox1.Location = new System.Drawing.Point(155, 411);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(230, 28);
-            this.comboBox1.TabIndex = 37;
+            this.cboInventory.Location = new System.Drawing.Point(155, 411);
+            this.cboInventory.Name = "cboInventory";
+            this.cboInventory.Size = new System.Drawing.Size(230, 28);
+            this.cboInventory.TabIndex = 37;
+            this.cboInventory.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cboInventory_KeyPress);
             // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(395, 359);
+            this.label11.Location = new System.Drawing.Point(422, 359);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(115, 20);
+            this.label11.Size = new System.Drawing.Size(87, 20);
             this.label11.TabIndex = 41;
-            this.label11.Text = "Cancelled By :";
+            this.label11.Text = "Reason(s) :";
             // 
-            // textBox9
+            // txtReason
             // 
-            this.textBox9.Location = new System.Drawing.Point(543, 357);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(230, 26);
-            this.textBox9.TabIndex = 40;
-            // 
-            // textBox12
-            // 
-            this.textBox12.Location = new System.Drawing.Point(543, 312);
-            this.textBox12.Name = "textBox12";
-            this.textBox12.Size = new System.Drawing.Size(230, 26);
-            this.textBox12.TabIndex = 39;
+            this.txtReason.Location = new System.Drawing.Point(543, 357);
+            this.txtReason.Multiline = true;
+            this.txtReason.Name = "txtReason";
+            this.txtReason.Size = new System.Drawing.Size(342, 82);
+            this.txtReason.TabIndex = 40;
             // 
             // label15
             // 
             this.label15.AutoSize = true;
             this.label15.Location = new System.Drawing.Point(398, 317);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(75, 20);
+            this.label15.Size = new System.Drawing.Size(112, 20);
             this.label15.TabIndex = 38;
-            this.label15.Text = "Valid By :";
+            this.label15.Text = "Canceled By :";
+            // 
+            // btnCancelOrder
+            // 
+            this.btnCancelOrder.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCancelOrder.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(60)))), ((int)(((byte)(160)))));
+            this.btnCancelOrder.FlatAppearance.BorderSize = 0;
+            this.btnCancelOrder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCancelOrder.ForeColor = System.Drawing.Color.White;
+            this.btnCancelOrder.Location = new System.Drawing.Point(747, 464);
+            this.btnCancelOrder.Name = "btnCancelOrder";
+            this.btnCancelOrder.Size = new System.Drawing.Size(138, 34);
+            this.btnCancelOrder.TabIndex = 42;
+            this.btnCancelOrder.Text = "Cancel Order";
+            this.btnCancelOrder.UseVisualStyleBackColor = false;
+            this.btnCancelOrder.Click += new System.EventHandler(this.btnCancelOrder_Click);
+            // 
+            // udCancelQty
+            // 
+            this.udCancelQty.Location = new System.Drawing.Point(543, 318);
+            this.udCancelQty.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.udCancelQty.Name = "udCancelQty";
+            this.udCancelQty.Size = new System.Drawing.Size(342, 26);
+            this.udCancelQty.TabIndex = 43;
+            this.udCancelQty.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // CancelOrder
             // 
@@ -329,32 +365,33 @@ namespace POS_Sales
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(897, 507);
+            this.Controls.Add(this.udCancelQty);
+            this.Controls.Add(this.btnCancelOrder);
             this.Controls.Add(this.label11);
-            this.Controls.Add(this.textBox9);
-            this.Controls.Add(this.textBox12);
+            this.Controls.Add(this.txtReason);
             this.Controls.Add(this.label15);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.cboInventory);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.label13);
-            this.Controls.Add(this.textBox10);
-            this.Controls.Add(this.textBox11);
+            this.Controls.Add(this.txtCanceledBy);
+            this.Controls.Add(this.txtValidBy);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.textBox8);
-            this.Controls.Add(this.textBox7);
+            this.Controls.Add(this.txtTotal);
+            this.Controls.Add(this.txtDiscount);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.textBox5);
-            this.Controls.Add(this.textBox6);
+            this.Controls.Add(this.txtQty);
+            this.Controls.Add(this.txtPrice);
+            this.Controls.Add(this.txtTransno);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtDesc);
+            this.Controls.Add(this.txtPcode);
+            this.Controls.Add(this.txtid);
             this.Controls.Add(this.label2);
             this.Controls.Add(panel1);
             this.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -366,6 +403,7 @@ namespace POS_Sales
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picclose)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.udCancelQty)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -375,31 +413,32 @@ namespace POS_Sales
         private System.Windows.Forms.PictureBox picclose;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox6;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox textBox7;
-        private System.Windows.Forms.TextBox textBox8;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.TextBox textBox10;
-        private System.Windows.Forms.TextBox textBox11;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.TextBox textBox9;
-        private System.Windows.Forms.TextBox textBox12;
         private System.Windows.Forms.Label label15;
+        public System.Windows.Forms.Button btnCancelOrder;
+        public System.Windows.Forms.TextBox txtid;
+        public System.Windows.Forms.TextBox txtPcode;
+        public System.Windows.Forms.TextBox txtDesc;
+        public System.Windows.Forms.TextBox txtQty;
+        public System.Windows.Forms.TextBox txtPrice;
+        public System.Windows.Forms.TextBox txtTransno;
+        public System.Windows.Forms.TextBox txtDiscount;
+        public System.Windows.Forms.TextBox txtTotal;
+        public System.Windows.Forms.TextBox txtCanceledBy;
+        public System.Windows.Forms.TextBox txtValidBy;
+        public System.Windows.Forms.ComboBox cboInventory;
+        public System.Windows.Forms.TextBox txtReason;
+        public System.Windows.Forms.NumericUpDown udCancelQty;
     }
 }

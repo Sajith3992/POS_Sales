@@ -11,6 +11,8 @@ using System.Windows.Forms;
 
 namespace POS_Sales
 {
+    //start 2.20.47
+
     public partial class Cashier : Form
     {
         SqlConnection cn = new SqlConnection();
@@ -60,6 +62,7 @@ namespace POS_Sales
             lookup.ShowDialog();
         }
 
+        //discount button 
         private void btnDiscount_Click(object sender, EventArgs e)
         {
 
@@ -93,10 +96,12 @@ namespace POS_Sales
             }
         }
 
+        //5.26.57
         private void btnDsale_Click(object sender, EventArgs e)
         {
             slide(btnDsale);
             DailySale dailySale = new DailySale();
+            dailySale.solduser = lblUsername.Text;
             dailySale.ShowDialog();
         }
 
@@ -128,7 +133,7 @@ namespace POS_Sales
         }
         #endregion button
 
-        // Table Load Produc Here 
+        // Table Load Produc Here  3.56
         public void LoadCart()
         {
             try
@@ -139,9 +144,10 @@ namespace POS_Sales
                 double discount = 0;
                 dvgCash.Rows.Clear();
                 cn.Open();
-                cm = new SqlCommand("SELECT c.id, c.pcode, p.pdesc, c.price, c.qty, c.total FROM tbCart AS c INNER JOIN tdProduct AS p ON c.pcode=p.pcode WHERE c.transno LIKE @transno and c.status LIKE 'Pending'", cn);
+                cm = new SqlCommand("SELECT c.id, c.pcode, p.pdesc, c.price, c.qty, c.disc, c.total FROM tbCart AS c INNER JOIN tdProduct AS p ON c.pcode=p.pcode WHERE c.transno LIKE @transno and c.status LIKE 'Pending'", cn);
                 cm.Parameters.AddWithValue("@transno", lblTransNo.Text);
                 dr = cm.ExecuteReader();
+
                 while (dr.Read())
                 {
                     i++;
@@ -189,6 +195,8 @@ namespace POS_Sales
             lblDisplayTotal.Text = sales.ToString("#,##0.00");
 
         }
+
+
         private void timer1_Tick(object sender, EventArgs e)
         {
             lblTimer.Text = DateTime.Now.ToString("hh:mm:ss tt");
@@ -317,7 +325,7 @@ namespace POS_Sales
                 MessageBox.Show(ex.Message);
             }
         }
-        public void AddToCart(string _pcode, double _price, int _qty)
+        public void AddToCart(string _pcode, double _price, int _qty)//3.49.44
         {
             try
             {
@@ -364,7 +372,7 @@ namespace POS_Sales
                         return;
                     }
 
-                    cn.Open();
+                cn.Open();
                 cm = new SqlCommand("INSERT INTO tbCart(transno, pcode, price, qty, sdate, cashier)VALUES(@transno, @pcode, @price, @qty, @sdate, @cashier)", cn);
                 cm.Parameters.AddWithValue("@transno", lblTransNo.Text);
                 cm.Parameters.AddWithValue("@pcode", _pcode);
@@ -384,11 +392,47 @@ namespace POS_Sales
             }
         }
 
-        private void dvgCash_SelectionChanged(object sender, EventArgs e)
+        private void dvgCash_SelectionChanged(object sender, EventArgs e) // 4.05.10
         {
+            //aragnne cashier eke table eken id ekai price ekai
             int i = dvgCash.CurrentRow.Index;
-            id = dvgCash[i, 1].Value.ToString();
-            price = dvgCash[i, 7].Value.ToString();
+            id = dvgCash[1,i].Value.ToString();
+            price = dvgCash[7, i].Value.ToString();
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void panelSlide_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void panel3_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void panel4_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void txtQty_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblDisplayTotal_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

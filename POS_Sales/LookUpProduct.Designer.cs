@@ -167,10 +167,11 @@ namespace POS_Sales
             // btnclose
             // 
             this.btnclose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnclose.BackColor = System.Drawing.Color.Silver;
+            this.btnclose.BackColor = System.Drawing.Color.Red;
             this.btnclose.FlatAppearance.BorderSize = 0;
             this.btnclose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnclose.ForeColor = System.Drawing.Color.Black;
+            this.btnclose.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnclose.ForeColor = System.Drawing.Color.White;
             this.btnclose.Location = new System.Drawing.Point(905, 46);
             this.btnclose.Name = "btnclose";
             this.btnclose.Size = new System.Drawing.Size(83, 34);

@@ -49,9 +49,10 @@ namespace POS_Sales
             // 
             this.picclose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.picclose.Image = ((System.Drawing.Image)(resources.GetObject("picclose.Image")));
-            this.picclose.Location = new System.Drawing.Point(601, 3);
+            this.picclose.Location = new System.Drawing.Point(599, -1);
             this.picclose.Name = "picclose";
-            this.picclose.Size = new System.Drawing.Size(27, 24);
+            this.picclose.Size = new System.Drawing.Size(32, 35);
+            this.picclose.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.picclose.TabIndex = 1;
             this.picclose.TabStop = false;
             this.picclose.Click += new System.EventHandler(this.picclose_Click);

@@ -13,6 +13,7 @@ namespace POS_Sales
     {
         SqlConnection cn = new SqlConnection();
         SqlCommand cm = new SqlCommand();
+        SqlDataReader dr;
 
         private string con;
         public string myConnection() 
@@ -46,6 +47,23 @@ namespace POS_Sales
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        public String getPassword(string username)//5.51
+        { 
+            string password= "";
+            cn.ConnectionString = myConnection();
+            cn.Open();
+            cm = new SqlCommand("SELECT password FROM tdUserAcc username= '"+ username +"'", cn);
+            dr = cm.ExecuteReader();
+            dr.Read();
+            if (dr.HasRows)
+            {
+                password = dr["password"].ToString();
+            }
+            dr.Close();
+            cn.Close();
+            return password;
         }
 
     }

@@ -41,9 +41,9 @@ namespace POS_Sales
             this.qty = qty;
         }
 
-        private void txtQty_KeyPress(object sender, KeyPressEventArgs e)
+        private void txtQty_KeyPress(object sender, KeyPressEventArgs e)//3.57
         {
-            if((e.KeyChar == 13) && (txtQty.Text != string.Empty))
+            if((e.KeyChar==13) && (txtQty.Text != string.Empty))
             {
                 try
                 {
