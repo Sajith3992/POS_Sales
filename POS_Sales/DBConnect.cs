@@ -51,10 +51,10 @@ namespace POS_Sales
 
         public String getPassword(string username)//5.51
         { 
-            string password= "";
+            string password = "";
             cn.ConnectionString = myConnection();
             cn.Open();
-            cm = new SqlCommand("SELECT password FROM tdUserAcc username= '"+ username +"'", cn);
+            cm = new SqlCommand("SELECT password FROM tdUserAcc WHERE username ='" + username+"'", cn);
             dr = cm.ExecuteReader();
             dr.Read();
             if (dr.HasRows)

@@ -18,7 +18,7 @@ namespace POS_Sales
         SqlConnection cn = new SqlConnection();
         SqlCommand cm = new SqlCommand();
         DBConnect dbcn = new DBConnect();
-
+        public  string _pass; //6.12 only this 
         public MainForm1()
         {
             InitializeComponent();
@@ -155,13 +155,15 @@ namespace POS_Sales
 
         private void buttonUser_Click(object sender, EventArgs e)
         {
-            openChildForm(new UserAccount());
+            openChildForm(new UserAccount(this));
             hideSubmenu();
         }
 
         private void buttonStore_Click(object sender, EventArgs e)
         {
             hideSubmenu();
+            Store store = new Store();
+            store.ShowDialog();
         }
 
         private void buttonLogout_Click(object sender, EventArgs e)

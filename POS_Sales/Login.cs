@@ -93,6 +93,7 @@ namespace POS_Sales
                         MainForm1 main = new MainForm1();
                         main.labelUserName.Text = _username;
                         main.lblName.Text = _name;
+                        main._pass = _pass;//6.12.40
                         main.ShowDialog();
                     }
                 }

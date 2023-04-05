@@ -108,6 +108,8 @@ namespace POS_Sales
         private void btnPass_Click(object sender, EventArgs e)
         {
             slide(btnPass);
+            ChangePassword change = new ChangePassword(this);
+            change.ShowDialog();
         }
 
         private void btnLogout_Click(object sender, EventArgs e)

@@ -18,13 +18,11 @@ namespace POS_Sales
         DBConnect dbcn = new DBConnect();
         SqlDataReader dr;
         Cashier cashier;
-        Login login;
-        public ChangePassword(Cashier cash, Login log)
+        
+        public ChangePassword(Cashier cash)
         {
             InitializeComponent();
             cashier = cash;
-            login = log;
-            
             lblUsername.Text = cashier.lblUsername.Text;
         }
 
@@ -37,10 +35,10 @@ namespace POS_Sales
         {
             try
             {
-                string oldpass = dbcn.getPassword(lblUsername.Text);//5.53.09
-                if(oldpass != txtPass.text)
+                string oldpass = dbcn.getPassword(lblUsername.Text).Trim();//5.53.09
+                if(oldpass != txtPass.Text.Trim())
                 {
-                    MessageBox.Show("Wrong password, please try again!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Wrong Password,Please try again ", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
                 else
@@ -50,7 +48,7 @@ namespace POS_Sales
 
 
                     txtNewPass.Visible = true;
-                    txtConfirmPass.Visible = true;
+                    txtComPass.Visible = true;
                     btnSave.Visible = true;
                 }
 
@@ -64,7 +62,7 @@ namespace POS_Sales
         {
             try
             {
-               if(txtNewPass.Text != txtConfirmPass.Text)
+               if(txtNewPass.Text != txtComPass.Text)
                 {
                     MessageBox.Show("New password and confirm password did not matched!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 

@@ -34,11 +34,12 @@ namespace POS_Sales
             this.picclose = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.txtNewPass = new MetroFramework.Controls.MetroTextBox();
             this.lblUsername = new System.Windows.Forms.Label();
             this.btnSave = new System.Windows.Forms.Button();
-            this.txtConfirmPass = new MetroFramework.Controls.MetroTextBox();
             this.btnNext = new System.Windows.Forms.Button();
+            this.txtPass = new MetroFramework.Controls.MetroTextBox();
+            this.txtComPass = new MetroFramework.Controls.MetroTextBox();
+            this.txtNewPass = new MetroFramework.Controls.MetroTextBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picclose)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -87,42 +88,6 @@ namespace POS_Sales
             this.pictureBox1.TabIndex = 14;
             this.pictureBox1.TabStop = false;
             // 
-            // txtNewPass
-            // 
-            // 
-            // 
-            // 
-            this.txtNewPass.CustomButton.Image = null;
-            this.txtNewPass.CustomButton.Location = new System.Drawing.Point(308, 1);
-            this.txtNewPass.CustomButton.Name = "";
-            this.txtNewPass.CustomButton.Size = new System.Drawing.Size(27, 27);
-            this.txtNewPass.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.txtNewPass.CustomButton.TabIndex = 1;
-            this.txtNewPass.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.txtNewPass.CustomButton.UseSelectable = true;
-            this.txtNewPass.CustomButton.Visible = false;
-            this.txtNewPass.DisplayIcon = true;
-            this.txtNewPass.Icon = ((System.Drawing.Image)(resources.GetObject("txtNewPass.Icon")));
-            this.txtNewPass.Lines = new string[0];
-            this.txtNewPass.Location = new System.Drawing.Point(26, 144);
-            this.txtNewPass.MaxLength = 32767;
-            this.txtNewPass.Name = "txtNewPass";
-            this.txtNewPass.PasswordChar = '●';
-            this.txtNewPass.PromptText = "Current Password ..";
-            this.txtNewPass.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.txtNewPass.SelectedText = "";
-            this.txtNewPass.SelectionLength = 0;
-            this.txtNewPass.SelectionStart = 0;
-            this.txtNewPass.ShortcutsEnabled = true;
-            this.txtNewPass.Size = new System.Drawing.Size(336, 29);
-            this.txtNewPass.TabIndex = 15;
-            this.txtNewPass.UseSelectable = true;
-            this.txtNewPass.UseSystemPasswordChar = true;
-            this.txtNewPass.Visible = false;
-            this.txtNewPass.WaterMark = "Current Password ..";
-            this.txtNewPass.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.txtNewPass.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
-            // 
             // lblUsername
             // 
             this.lblUsername.AutoSize = true;
@@ -149,42 +114,6 @@ namespace POS_Sales
             this.btnSave.Visible = false;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
-            // txtConfirmPass
-            // 
-            // 
-            // 
-            // 
-            this.txtConfirmPass.CustomButton.Image = null;
-            this.txtConfirmPass.CustomButton.Location = new System.Drawing.Point(308, 1);
-            this.txtConfirmPass.CustomButton.Name = "";
-            this.txtConfirmPass.CustomButton.Size = new System.Drawing.Size(27, 27);
-            this.txtConfirmPass.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.txtConfirmPass.CustomButton.TabIndex = 1;
-            this.txtConfirmPass.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.txtConfirmPass.CustomButton.UseSelectable = true;
-            this.txtConfirmPass.CustomButton.Visible = false;
-            this.txtConfirmPass.DisplayIcon = true;
-            this.txtConfirmPass.Icon = ((System.Drawing.Image)(resources.GetObject("txtConfirmPass.Icon")));
-            this.txtConfirmPass.Lines = new string[0];
-            this.txtConfirmPass.Location = new System.Drawing.Point(26, 190);
-            this.txtConfirmPass.MaxLength = 32767;
-            this.txtConfirmPass.Name = "txtConfirmPass";
-            this.txtConfirmPass.PasswordChar = '●';
-            this.txtConfirmPass.PromptText = "Confirm Password ..";
-            this.txtConfirmPass.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.txtConfirmPass.SelectedText = "";
-            this.txtConfirmPass.SelectionLength = 0;
-            this.txtConfirmPass.SelectionStart = 0;
-            this.txtConfirmPass.ShortcutsEnabled = true;
-            this.txtConfirmPass.Size = new System.Drawing.Size(336, 29);
-            this.txtConfirmPass.TabIndex = 21;
-            this.txtConfirmPass.UseSelectable = true;
-            this.txtConfirmPass.UseSystemPasswordChar = true;
-            this.txtConfirmPass.Visible = false;
-            this.txtConfirmPass.WaterMark = "Confirm Password ..";
-            this.txtConfirmPass.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.txtConfirmPass.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
-            // 
             // btnNext
             // 
             this.btnNext.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -200,16 +129,124 @@ namespace POS_Sales
             this.btnNext.UseVisualStyleBackColor = false;
             this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
             // 
+            // txtPass
+            // 
+            // 
+            // 
+            // 
+            this.txtPass.CustomButton.Image = null;
+            this.txtPass.CustomButton.Location = new System.Drawing.Point(286, 1);
+            this.txtPass.CustomButton.Name = "";
+            this.txtPass.CustomButton.Size = new System.Drawing.Size(27, 27);
+            this.txtPass.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.txtPass.CustomButton.TabIndex = 1;
+            this.txtPass.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.txtPass.CustomButton.UseSelectable = true;
+            this.txtPass.CustomButton.Visible = false;
+            this.txtPass.DisplayIcon = true;
+            this.txtPass.Icon = ((System.Drawing.Image)(resources.GetObject("txtPass.Icon")));
+            this.txtPass.Lines = new string[0];
+            this.txtPass.Location = new System.Drawing.Point(26, 137);
+            this.txtPass.MaxLength = 32767;
+            this.txtPass.Name = "txtPass";
+            this.txtPass.PasswordChar = '●';
+            this.txtPass.PromptText = "Current Password ..";
+            this.txtPass.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.txtPass.SelectedText = "";
+            this.txtPass.SelectionLength = 0;
+            this.txtPass.SelectionStart = 0;
+            this.txtPass.ShortcutsEnabled = true;
+            this.txtPass.Size = new System.Drawing.Size(314, 29);
+            this.txtPass.TabIndex = 23;
+            this.txtPass.UseSelectable = true;
+            this.txtPass.UseSystemPasswordChar = true;
+            this.txtPass.WaterMark = "Current Password ..";
+            this.txtPass.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.txtPass.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            // 
+            // txtComPass
+            // 
+            // 
+            // 
+            // 
+            this.txtComPass.CustomButton.Image = null;
+            this.txtComPass.CustomButton.Location = new System.Drawing.Point(286, 1);
+            this.txtComPass.CustomButton.Name = "";
+            this.txtComPass.CustomButton.Size = new System.Drawing.Size(27, 27);
+            this.txtComPass.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.txtComPass.CustomButton.TabIndex = 1;
+            this.txtComPass.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.txtComPass.CustomButton.UseSelectable = true;
+            this.txtComPass.CustomButton.Visible = false;
+            this.txtComPass.DisplayIcon = true;
+            this.txtComPass.Icon = ((System.Drawing.Image)(resources.GetObject("txtComPass.Icon")));
+            this.txtComPass.Lines = new string[0];
+            this.txtComPass.Location = new System.Drawing.Point(26, 182);
+            this.txtComPass.MaxLength = 32767;
+            this.txtComPass.Name = "txtComPass";
+            this.txtComPass.PasswordChar = '●';
+            this.txtComPass.PromptText = "Confirm Password ..";
+            this.txtComPass.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.txtComPass.SelectedText = "";
+            this.txtComPass.SelectionLength = 0;
+            this.txtComPass.SelectionStart = 0;
+            this.txtComPass.ShortcutsEnabled = true;
+            this.txtComPass.Size = new System.Drawing.Size(314, 29);
+            this.txtComPass.TabIndex = 24;
+            this.txtComPass.UseSelectable = true;
+            this.txtComPass.UseSystemPasswordChar = true;
+            this.txtComPass.Visible = false;
+            this.txtComPass.WaterMark = "Confirm Password ..";
+            this.txtComPass.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.txtComPass.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            // 
+            // txtNewPass
+            // 
+            // 
+            // 
+            // 
+            this.txtNewPass.CustomButton.Image = null;
+            this.txtNewPass.CustomButton.Location = new System.Drawing.Point(286, 1);
+            this.txtNewPass.CustomButton.Name = "";
+            this.txtNewPass.CustomButton.Size = new System.Drawing.Size(27, 27);
+            this.txtNewPass.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.txtNewPass.CustomButton.TabIndex = 1;
+            this.txtNewPass.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.txtNewPass.CustomButton.UseSelectable = true;
+            this.txtNewPass.CustomButton.Visible = false;
+            this.txtNewPass.DisplayIcon = true;
+            this.txtNewPass.Icon = ((System.Drawing.Image)(resources.GetObject("txtNewPass.Icon")));
+            this.txtNewPass.Lines = new string[0];
+            this.txtNewPass.Location = new System.Drawing.Point(26, 137);
+            this.txtNewPass.MaxLength = 32767;
+            this.txtNewPass.Name = "txtNewPass";
+            this.txtNewPass.PasswordChar = '●';
+            this.txtNewPass.PromptText = "Current Password ..";
+            this.txtNewPass.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.txtNewPass.SelectedText = "";
+            this.txtNewPass.SelectionLength = 0;
+            this.txtNewPass.SelectionStart = 0;
+            this.txtNewPass.ShortcutsEnabled = true;
+            this.txtNewPass.Size = new System.Drawing.Size(314, 29);
+            this.txtNewPass.TabIndex = 25;
+            this.txtNewPass.UseSelectable = true;
+            this.txtNewPass.UseSystemPasswordChar = true;
+            this.txtNewPass.Visible = false;
+            this.txtNewPass.WaterMark = "Current Password ..";
+            this.txtNewPass.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.txtNewPass.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            // 
             // ChangePassword
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(386, 299);
+            this.Controls.Add(this.txtNewPass);
+            this.Controls.Add(this.txtComPass);
+            this.Controls.Add(this.txtPass);
             this.Controls.Add(this.btnNext);
-            this.Controls.Add(this.txtConfirmPass);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.lblUsername);
-            this.Controls.Add(this.txtNewPass);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -233,10 +270,11 @@ namespace POS_Sales
         private System.Windows.Forms.PictureBox picclose;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private MetroFramework.Controls.MetroTextBox txtNewPass;
         private System.Windows.Forms.Label lblUsername;
         public System.Windows.Forms.Button btnSave;
-        private MetroFramework.Controls.MetroTextBox txtConfirmPass;
         public System.Windows.Forms.Button btnNext;
+        private MetroFramework.Controls.MetroTextBox txtPass;
+        private MetroFramework.Controls.MetroTextBox txtComPass;
+        private MetroFramework.Controls.MetroTextBox txtNewPass;
     }
 }
