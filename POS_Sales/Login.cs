@@ -19,7 +19,7 @@ namespace POS_Sales
         SqlDataReader dr;
 
         public string _pass = "";
-        public bool _isactive;
+        public bool _isactivate;
         
 
         public Login()
@@ -56,7 +56,7 @@ namespace POS_Sales
                     _name = dr["name"].ToString();
                     _role = dr["role"].ToString();
                     _pass = dr["password"].ToString();
-                    _isactive = bool.Parse(dr["isactive"].ToString());
+                    _isactivate = bool.Parse(dr["isactivate"].ToString());
 
                 }
                 else
@@ -68,9 +68,9 @@ namespace POS_Sales
 
                 if (found)
                 {
-                    if (!_isactive)
+                    if (!_isactivate)
                     {
-                        MessageBox.Show("Account is inactive. Unable to login", "Inactive Account", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        MessageBox.Show("Account is deactived. Unable to login", "Inactive Account", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         return;
                     }
                     if(_role == "Cashier")

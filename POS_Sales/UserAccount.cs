@@ -19,7 +19,7 @@ namespace POS_Sales
         SqlDataReader dr;
         MainForm1 main;
 
-        string username;
+        public string username;
         string name;
         string role;
         string accstatus;
@@ -83,6 +83,7 @@ namespace POS_Sales
                 cn.Close();
                 MessageBox.Show("New Account has been successfully saved!", "Saved Record", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 Clear();
+                LoadUser();
             }
             catch(Exception ex)
             {
@@ -169,6 +170,23 @@ namespace POS_Sales
                 LoadUser();
             }
 
+        }
+
+        private void btnResetPass_Click(object sender, EventArgs e)
+        {
+            ResetPassword reset = new ResetPassword(this);
+            reset.ShowDialog();
+        }
+
+        private void btnProperties_Click(object sender, EventArgs e)//6.51
+        {
+            UserProperties properties = new UserProperties(this);
+            properties.Text = name + "\\" + role + "  Properties";
+            properties.txtFullname.Text = name;
+            properties.cboRole.Text = role;
+            properties.cboActivate.Text = accstatus;
+            properties.username = username;
+            properties.ShowDialog();
         }
     }
 }
