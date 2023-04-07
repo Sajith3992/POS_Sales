@@ -148,6 +148,12 @@
     <Compile Include="NewCashier.Designer.cs">
       <DependentUpon>NewCashier.cs</DependentUpon>
     </Compile>
+    <Compile Include="NewDiscount.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NewDiscount.Designer.cs">
+      <DependentUpon>NewDiscount.cs</DependentUpon>
+    </Compile>
     <Compile Include="POS_SalesDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -281,6 +287,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="NewCashier.resx">
       <DependentUpon>NewCashier.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NewDiscount.resx">
+      <DependentUpon>NewDiscount.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Product.resx">
       <DependentUpon>Product.cs</DependentUpon>

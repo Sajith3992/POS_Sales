@@ -93,7 +93,7 @@ namespace POS_Sales
         {
             try
             {
-                if ((double.Parse(txtChange.Text) < 0 || (txtCash.Text.Equals(""))))
+                if ((double.Parse(txtChange.Text) < 0) || (txtCash.Text.Equals("")))
                 {
                     MessageBox.Show("Insufficient amount, Please enter the correct amount!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;

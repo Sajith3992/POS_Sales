@@ -63,7 +63,7 @@ namespace POS_Sales
         }
 
         //discount button 
-        private void btnDiscount_Click(object sender, EventArgs e)
+        private void btnDiscount_Click(object sender, EventArgs e)//4.05.22
         {
 
             slide(btnDiscount);
@@ -71,6 +71,11 @@ namespace POS_Sales
             discount.lbId.Text = id;
             discount.txtTotalPrice.Text = price;
             discount.ShowDialog();
+           /* NewDiscount newDiscount = new NewDiscount();
+            newDiscount.lbId.Text = id;
+            newDiscount.txtTotalPrice.Text = price;
+            newDiscount.ShowDialog();*/
+           
         }
 
         private void btnSettle_Click(object sender, EventArgs e)
@@ -140,7 +145,7 @@ namespace POS_Sales
         {
             try
             {
-                Boolean hascart = false;
+                Boolean hascart = false; //4.30 set visible items 
                 int i = 0;
                 double total = 0;
                 double discount = 0;
@@ -238,10 +243,10 @@ namespace POS_Sales
            
         }
 
-        private void dvgCash_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void dvgCash_CellContentClick(object sender, DataGridViewCellEventArgs e)//4.32.57- 4.41
+
         {
             string colName = dvgCash.Columns[e.ColumnIndex].Name;
-
             if (colName == "Delete")
             {
 
@@ -251,43 +256,43 @@ namespace POS_Sales
                     MessageBox.Show("Items has been successfully removed", "Remove item", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     LoadCart();
                 }
-                else if(colName == "colAdd")
-                {
-                    int i = 0;
-                    cn.Open();
-                    cm = new SqlCommand("SELECT SUM(qty)as qty FROM tdProduct WHERE pcode LIKE '" + dvgCash.Rows[e.RowIndex].Cells[2].Value.ToString() + "'GROUP BY pcode", cn);
-                    i = int.Parse(cm.ExecuteScalar().ToString());
-                    cn.Close();
+            }
+            else if (colName == "colAdd")
+            {
+                int i = 0;
+                cn.Open();
+                cm = new SqlCommand("SELECT SUM(qty)as qty FROM tdProduct WHERE pcode LIKE '" + dvgCash.Rows[e.RowIndex].Cells[2].Value.ToString() + "'GROUP BY pcode", cn);
+                i = int.Parse(cm.ExecuteScalar().ToString());
+                cn.Close();
 
-                    if (int.Parse(dvgCash.Rows[e.RowIndex].Cells[5].Value.ToString())<i)
-                    {
-                        dbcn.ExecuteQuery("UPDATE tbCart SET qty = qty + " +int.Parse(txtQty.Text)+ "WHERE transno LIKE '" +lblTransNo.Text + "'AND pcode LIKE '"+ dvgCash.Rows[e.RowIndex].Cells[2].Value.ToString() + "'");
-                        LoadCart();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Remaining qty on hand is " + i + "!", "Out of Stock", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        return;
-                    }
+                if (int.Parse(dvgCash.Rows[e.RowIndex].Cells[5].Value.ToString()) < i)
+                {
+                    dbcn.ExecuteQuery("UPDATE tbCart SET qty = qty + " + int.Parse(txtQty.Text) + "WHERE transno LIKE '" + lblTransNo.Text + "'AND pcode LIKE '" + dvgCash.Rows[e.RowIndex].Cells[2].Value.ToString() + "'");
+                    LoadCart();
                 }
-                else if(colName == "colReduce")
+                else
                 {
-                    int i = 0;
-                    cn.Open();
-                    cm = new SqlCommand("SELECT SUM(qty)as qty FROM tbCart WHERE pcode LIKE '" + dvgCash.Rows[e.RowIndex].Cells[2].Value.ToString() + "'GROUP BY pcode", cn);
-                    i = int.Parse(cm.ExecuteScalar().ToString());
-                    cn.Close();
+                    MessageBox.Show("Remaining qty on hand is " + i + "!", "Out of Stock", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+            }
+            else if (colName == "colReduce")
+            {
+                int i = 0;
+                cn.Open();
+                cm = new SqlCommand("SELECT SUM(qty) as qty FROM tbCart WHERE pcode LIKE '" + dvgCash.Rows[e.RowIndex].Cells[2].Value.ToString() + "'GROUP BY pcode", cn);
+                i = int.Parse(cm.ExecuteScalar().ToString());
+                cn.Close();
 
-                    if (i > 1)
-                    {
-                        dbcn.ExecuteQuery("UPDATE tbCart SET qty = qty - " + int.Parse(txtQty.Text) + "WHERE transno LIKE '" + lblTransNo.Text + "'AND pcode LIKE '" + dvgCash.Rows[e.RowIndex].Cells[2].Value.ToString() + "'");
-                        LoadCart();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Remaining qty on cart is " + i + "!", "Warnig", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        return;
-                    }
+                if (i > 1)
+                {
+                    dbcn.ExecuteQuery("UPDATE tbCart SET qty = qty - " + int.Parse(txtQty.Text) + "WHERE transno LIKE '" + lblTransNo.Text + "'AND pcode LIKE '" + dvgCash.Rows[e.RowIndex].Cells[2].Value.ToString() + "'");
+                    LoadCart();
+                }
+                else
+                {
+                    MessageBox.Show("Remaining qty on Cart is " + i + "!", "Warnig", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
                 }
             }
         }
@@ -346,20 +351,20 @@ namespace POS_Sales
                     cart_qty = int.Parse(dr["qty"].ToString());
                     found = true;
                 }
-                else found = false;
-
-                dr.Close();
-                cn.Close();
+                else 
+                    found = false;
+                    dr.Close();
+                    cn.Close();
 
                 if (found)
                 {
-                    if(qty <(int.Parse(txtQty.Text)+cart_qty))
+                    if(qty < (int.Parse(txtQty.Text)+cart_qty))
                     {
                         MessageBox.Show("Unable to procced. Remaining quantity on hand is" + qty, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         return;
                     }
                     cn.Open();
-                    cm = new SqlCommand("Update tbCart set qty=(qty+ " + _qty + ")Where id='" + id + "'", cn);
+                    cm = new SqlCommand("Update tbCart set qty = (qty + " + _qty + ")Where id = '" + id + "'", cn);
                     cm.ExecuteReader();
                     cn.Close();
                     txtBarcode.SelectionStart = 0;

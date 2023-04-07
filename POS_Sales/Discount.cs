@@ -16,6 +16,7 @@ namespace POS_Sales
         SqlConnection cn = new SqlConnection();
         SqlCommand cm = new SqlCommand();
         DBConnect dbcn = new DBConnect();
+        SqlDataReader dr;
        
         string stitle = "Point Of Sales";
         Cashier cashier;
@@ -29,7 +30,8 @@ namespace POS_Sales
             this.KeyPreview = true;
         }
 
-        private void picclose_Click(object sender, EventArgs e)
+        private void picclose_Click(object sender, EventArgs e)//4.03.26
+
         {
             this.Dispose();
         }
@@ -37,19 +39,16 @@ namespace POS_Sales
         private void Discount_KeyDown(object sender, KeyEventArgs e)
         {
             
-            if (e.KeyCode == Keys.Escape)
-            {
-                this.Dispose();
-            }
-           // else if (e.KeyCode == Keys.Enter) btnsave.PerformClick();
+            if (e.KeyCode == Keys.Escape) this.Dispose();
+            else if (e.KeyCode == Keys.Enter) btnsave.PerformClick();
         }
 
-        private void txtDiscount_TextChanged(object sender, EventArgs e)
+        private void txtDiscount_TextChanged(object sender, EventArgs e)//4.03.55
         {
             try
             {
                 double disc = double.Parse(txtTotalPrice.Text) * double.Parse(txtDiscount.Text)*0.01;
-                txtDiscountAmount.Text = disc.ToString("#,##0,00");
+                txtDiscountAmount.Text = disc.ToString("#,##0.00");
             }
 
             catch(Exception )

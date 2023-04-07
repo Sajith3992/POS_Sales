@@ -33,7 +33,7 @@ namespace POS_Sales
             return table;
         }
 
-        public void ExecuteQuery(String sql)
+        public void ExecuteQuery(String sql)//4.34.44
         {
             try
             {
