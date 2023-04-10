@@ -67,7 +67,7 @@ namespace POS_Sales
             {
                 i++;
                 total += double.Parse(dr["total"].ToString());
-                dvgSold.Rows.Add(i, dr["id"].ToString(), dr["transno"].ToString(), dr["pcode"].ToString(), dr["price"].ToString(), dr["qty"].ToString(), dr["disc"].ToString(), dr["total"].ToString());
+                dvgSold.Rows.Add(i, dr["id"].ToString(), dr["transno"].ToString(), dr["pcode"].ToString(), dr["pdesc"].ToString(), dr["price"].ToString(), dr["qty"].ToString(), dr["disc"].ToString(), dr["total"].ToString());
 
             }
             dr.Close();
@@ -101,17 +101,17 @@ namespace POS_Sales
         private void dvgSold_CellContentClick(object sender, DataGridViewCellEventArgs e)//5.25
         {
             string colName = dvgSold.Columns[e.ColumnIndex].Name;
-            if(colName == "Cancel")
+            if(colName == "Cansel")
             {
                 CancelOrder cancelOrder = new CancelOrder(this);
-                cancelOrder.txtid.Text = dvgSold.Rows[e.RowIndex].Cells[1].Value.ToString();
-                cancelOrder.txtTransno.Text = dvgSold.Rows[e.RowIndex].Cells[2].Value.ToString();
-                cancelOrder.txtPcode.Text = dvgSold.Rows[e.RowIndex].Cells[3].Value.ToString();
-                cancelOrder.txtDesc.Text = dvgSold.Rows[e.RowIndex].Cells[4].Value.ToString();
-                cancelOrder.txtPrice.Text = dvgSold.Rows[e.RowIndex].Cells[5].Value.ToString();
-                cancelOrder.txtQty.Text = dvgSold.Rows[e.RowIndex].Cells[6].Value.ToString();
-                cancelOrder.txtDiscount.Text = dvgSold.Rows[e.RowIndex].Cells[7].Value.ToString();
-                cancelOrder.txtTotal.Text = dvgSold.Rows[e.RowIndex].Cells[8].Value.ToString();
+                cancelOrder.txtid.Text = dvgSold.Rows[e.RowIndex].Cells[1].Value?.ToString();
+                cancelOrder.txtTransno.Text = dvgSold.Rows[e.RowIndex].Cells[2].Value?.ToString();
+                cancelOrder.txtPcode.Text = dvgSold.Rows[e.RowIndex].Cells[3].Value?.ToString();
+                cancelOrder.txtDesc.Text = dvgSold.Rows[e.RowIndex].Cells[4].Value?.ToString();
+                cancelOrder.txtPrice.Text = dvgSold.Rows[e.RowIndex].Cells[5].Value?.ToString();
+                cancelOrder.txtQty.Text = dvgSold.Rows[e.RowIndex].Cells[6].Value?.ToString();
+                cancelOrder.txtDiscount.Text = dvgSold.Rows[e.RowIndex].Cells[7].Value?.ToString();
+                cancelOrder.txtTotal.Text = dvgSold.Rows[e.RowIndex].Cells[8].Value?.ToString();
                 cancelOrder.txtCanceledBy.Text = solduser;
                 cancelOrder.ShowDialog();
             }

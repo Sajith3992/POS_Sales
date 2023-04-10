@@ -49,11 +49,12 @@ namespace POS_Sales
                     dr.Close();
                     cn.Close();
                     SaveCancelOrder(user);
-                    if(cancelOrder.cboInventory.Text== "yes")
+
+                    if(cancelOrder.cboInventory.Text=="yes")//5.37.34
                     {
                         dbcn.ExecuteQuery("UPDATE tdProduct SET qty = qty + " + cancelOrder.udCancelQty.Value + " where pcode = '" + cancelOrder.txtPcode.Text + "'");//5.37.51
                     }
-                    dbcn.ExecuteQuery("UPDATE tbCart SET qty = qty + " + cancelOrder.udCancelQty.Value + " where id LIKE = '" + cancelOrder.txtid.Text + "'");
+                    dbcn.ExecuteQuery("UPDATE tbCart SET qty = qty + " + cancelOrder.udCancelQty.Value + " where id LIKE '" + cancelOrder.txtid.Text + "'");
                     MessageBox.Show("Order transaction successfully cancelled !", "Cancel Order", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.Dispose();
                     cancelOrder.ReloadSold(); //5.42.31
@@ -69,7 +70,7 @@ namespace POS_Sales
             }
         }
 
-        public void SaveCancelOrder(string user)
+        public void SaveCancelOrder(string user)//5.37
         {
             try
             {
@@ -84,6 +85,7 @@ namespace POS_Sales
                 cm.Parameters.AddWithValue("@sdate", DateTime.Now);
                 cm.Parameters.AddWithValue("@voidby", user);
                 cm.Parameters.AddWithValue("@cancelledby", cancelOrder.txtCanceledBy.Text);
+                cm.Parameters.AddWithValue("@reason", cancelOrder.cboInventory.Text);
                 cm.Parameters.AddWithValue("@action", cancelOrder.cboInventory.Text);
                 cm.ExecuteNonQuery();
                 cn.Close();

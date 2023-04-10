@@ -116,7 +116,6 @@ namespace POS_Sales
             // 
             // txtDiscount
             // 
-            this.txtDiscount.Enabled = false;
             this.txtDiscount.Location = new System.Drawing.Point(177, 113);
             this.txtDiscount.Name = "txtDiscount";
             this.txtDiscount.Size = new System.Drawing.Size(432, 26);

@@ -27,22 +27,25 @@ namespace POS_Sales
             this.Dispose();
         }
 
-        private void btnCancelOrder_Click(object sender, EventArgs e)//5.41.00
+        private void btnCancelOrder_Click(object sender, EventArgs e)//5.39
         {
             try
             {
-                if(cboInventory.Text != string.Empty && udCancelQty.Value > 0 && txtReason.Text != string.Empty)
+                if(cboInventory.Text != string.Empty && udCancelQty.Value >0 && txtReason.Text != string.Empty)
                 {
-                    if(int.Parse(txtQty.Text) >= udCancelQty.Value)
+                    int qty;
+                    if(int.TryParse(txtQty.Text, out qty) && qty >= udCancelQty.Value)
                     {
                         Void @void = new Void(this);
-                        @void.txtUsername.Focus(); // 5.44.34
+                        @void.txtUsername.Focus();
                         @void.ShowDialog();
+
                     }
                 }
-            }catch(Exception ex)
+            }
+            catch(Exception ex)
             {
-                MessageBox.Show(ex.Message, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show(ex.Message,"Error",MessageBoxButtons.OK,MessageBoxIcon.Warning);
             }
         }
 

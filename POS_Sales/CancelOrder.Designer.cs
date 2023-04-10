@@ -327,9 +327,9 @@ namespace POS_Sales
             this.label15.AutoSize = true;
             this.label15.Location = new System.Drawing.Point(398, 317);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(112, 20);
+            this.label15.Size = new System.Drawing.Size(121, 20);
             this.label15.TabIndex = 38;
-            this.label15.Text = "Canceled By :";
+            this.label15.Text = "Canceled Qty :";
             // 
             // btnCancelOrder
             // 

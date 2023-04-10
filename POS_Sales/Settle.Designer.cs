@@ -67,7 +67,6 @@ namespace POS_Sales
             // 
             // txtCash
             // 
-            this.txtCash.Enabled = false;
             this.txtCash.Location = new System.Drawing.Point(12, 82);
             this.txtCash.Multiline = true;
             this.txtCash.Name = "txtCash";

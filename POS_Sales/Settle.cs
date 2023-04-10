@@ -89,7 +89,7 @@ namespace POS_Sales
             txtCash.Focus();
         }
 
-        private void btnEnter_Click(object sender, EventArgs e)
+        private void btnEnter_Click(object sender, EventArgs e)//4.20
         {
             try
             {
