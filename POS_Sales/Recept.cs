@@ -16,5 +16,11 @@ namespace POS_Sales
         {
             InitializeComponent();
         }
+
+        private void Recept_Load(object sender, EventArgs e)
+        {
+
+            this.reportViewer1.RefreshReport();
+        }
     }
 }
