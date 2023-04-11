@@ -730,10 +730,6 @@ namespace POS_Sales
         private System.Windows.Forms.Panel panelSlide;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label lblTimer;
-        private System.Windows.Forms.Label lblVat;
-        private System.Windows.Forms.Label lblTax;
-        private System.Windows.Forms.Label lblDiscount;
-        private System.Windows.Forms.Label lblSaleTotal;
         private System.Windows.Forms.Label lblvatable;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
@@ -744,7 +740,6 @@ namespace POS_Sales
         public System.Windows.Forms.Label lblUsername;
         private System.Windows.Forms.Label lblVaat;
         public System.Windows.Forms.Label lblTransNo;
-        private System.Windows.Forms.TextBox txtQty;
         public System.Windows.Forms.TextBox txtBarcode;
         public System.Windows.Forms.DataGridView dvgCash;
         public System.Windows.Forms.Label lblDisplayTotal;
@@ -760,5 +755,10 @@ namespace POS_Sales
         private System.Windows.Forms.DataGridViewImageColumn colAdd;
         private System.Windows.Forms.DataGridViewImageColumn colReduce;
         private System.Windows.Forms.DataGridViewImageColumn Delete;
+        public System.Windows.Forms.Label lblVat;
+        public System.Windows.Forms.Label lblTax;
+        public System.Windows.Forms.Label lblDiscount;
+        public System.Windows.Forms.Label lblSaleTotal;
+        public System.Windows.Forms.TextBox txtQty;
     }
 }
