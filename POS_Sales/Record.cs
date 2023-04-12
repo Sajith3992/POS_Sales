@@ -33,11 +33,11 @@ namespace POS_Sales
             //Sort By Total Amount
             if (cboTopSell.Text == "Sort By Qty")
             {
-                cm = new SqlCommand("SELECT TOP 10 pcode, pdesc, isnull(sum(qty),0) AS qty, ISNULL(SUM(total),0) AS total FROM vwSoldItems WHERE sdate BETWEEN '" + dtFromTopSelling.Value.ToString() + "' AND '" + dtToTopsell.Value.ToString() + "' AND status LIKE 'Sold' GROUP BY pcode, pdesc, ORDER BY qty DESC", cn);
+                cm = new SqlCommand("SELECT TOP 10 pcode, pdesc, isnull(sum(qty),0) AS qty, ISNULL(SUM(total),0) AS total FROM vwSoldItems WHERE sdate BETWEEN '" + dtFromTopSelling.Value.ToString() + "' AND '" + dtToTopsell.Value.ToString() + "' AND status LIKE 'Sold' GROUP BY pcode, pdesc ORDER BY qty DESC", cn);
             }
             else if(cboTopSell.Text == "Sort By Total Amount")
             {
-                cm = new SqlCommand("SELECT TOP 10 pcode, pdesc, isnull(sum(qty),0) AS qty, ISNULL(SUM(total),0) AS total FROM vwSoldItems WHERE sdate BETWEEN '" + dtFromTopSelling.Value.ToString() + "' AND '" + dtToTopsell.Value.ToString() + "' AND status LIKE 'Sold' GROUP BY pcode, pdesc, ORDER BY total DESC", cn);
+                cm = new SqlCommand("SELECT TOP 10 pcode, pdesc, isnull(sum(qty),0) AS qty, ISNULL(SUM(total),0) AS total FROM vwSoldItems WHERE sdate BETWEEN '" + dtFromTopSelling.Value.ToString() + "' AND '" + dtToTopsell.Value.ToString() + "' AND status LIKE 'Sold' GROUP BY pcode, pdesc ORDER BY total DESC", cn);
             }
             dr = cm.ExecuteReader();
             while (dr.Read())
