@@ -124,6 +124,7 @@ namespace POS_Sales
 
         private void buttonStockAdjectment_Click(object sender, EventArgs e)
         {
+            openChildForm(new Adjustments(this));//8.13.47
             hideSubmenu();
         }
 
@@ -140,11 +141,13 @@ namespace POS_Sales
 
         private void buttonSaleHistory_Click(object sender, EventArgs e)
         {
+            openChildForm(new DailySale(this));
             hideSubmenu();
         }
 
         private void buttonPosRecord_Click(object sender, EventArgs e)
         {
+            openChildForm(new Record());//8.54
             hideSubmenu();
         }
 

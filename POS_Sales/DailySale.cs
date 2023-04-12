@@ -18,12 +18,15 @@ namespace POS_Sales
         DBConnect dbcn = new DBConnect();
         SqlDataReader dr;
         public string solduser;
+        MainForm1 main;
 
-        public DailySale()
+        public DailySale(MainForm1 mn)
         {
             InitializeComponent();
             cn = new SqlConnection(dbcn.myConnection());
+            main = mn;
             LoadCashier();
+            
         }
 
         private void picclose_Click(object sender, EventArgs e)
@@ -112,8 +115,46 @@ namespace POS_Sales
                 cancelOrder.txtQty.Text = dvgSold.Rows[e.RowIndex].Cells[6].Value?.ToString();
                 cancelOrder.txtDiscount.Text = dvgSold.Rows[e.RowIndex].Cells[7].Value?.ToString();
                 cancelOrder.txtTotal.Text = dvgSold.Rows[e.RowIndex].Cells[8].Value?.ToString();
-                cancelOrder.txtCanceledBy.Text = solduser;
                 cancelOrder.ShowDialog();
+            }
+        }
+
+        private void btnPrint_Click(object sender, EventArgs e)//7.30-7.44
+        {
+            POSReport report = new POSReport();
+            string param = "Date From: " + dateFrom.Value.ToString() + "To: " + dateTo.Value.ToShortDateString();
+            if (cboCashier.Text == "All Cashier")
+            {
+                report.LoadDailyReport("select c.id, c.transno, c.pcode, p.pdesc, c.price, c.qty, c.disc , c.total  from tbCart as c inner join tdProduct as p on c.pcode = p.pcode where status like 'Sold' and sdate between '" + dateFrom.Value + "' and '" + dateTo.Value + "'",param, cboCashier.Text);
+
+
+            }
+            else
+            {
+                report.LoadDailyReport("select c.id, c.transno, c.pcode, p.pdesc, c.price, c.qty, c.disc, c.total from tbCart as c inner join tdProduct as p on c.pcode = p.pcode where status like 'Sold' and sdate between '" + dateFrom.Value + "' and '" + dateTo.Value + "' and cashier like'" + cboCashier.Text + "' ", param, cboCashier.Text);
+            }
+            report.ShowDialog();
+        }
+
+        private void dvgSold_CellContentClick_1(object sender, DataGridViewCellEventArgs e)//8.30
+        {
+            string colName = dvgSold.Columns[e.ColumnIndex].Name;
+            if(colName == "Cansel")
+            {
+                CancelOrder cancel = new CancelOrder(this);
+                cancel.txtid.Text = dvgSold.Rows[e.RowIndex].Cells[1].Value.ToString();
+                cancel.txtTransno.Text = dvgSold.Rows[e.RowIndex].Cells[2].Value.ToString();
+                cancel.txtPcode.Text = dvgSold.Rows[e.RowIndex].Cells[3].Value.ToString();
+                cancel.txtDesc.Text = dvgSold.Rows[e.RowIndex].Cells[4].Value.ToString();
+                cancel.txtPrice.Text = dvgSold.Rows[e.RowIndex].Cells[5].Value.ToString();
+                cancel.txtQty.Text = dvgSold.Rows[e.RowIndex].Cells[6].Value.ToString();
+                cancel.txtDiscount.Text = dvgSold.Rows[e.RowIndex].Cells[7].Value.ToString();
+                cancel.txtTotal.Text = dvgSold.Rows[e.RowIndex].Cells[8].Value.ToString();
+                if (lblTitle.Visible == false)
+                    cancel.txtCanceledBy.Text = main.labelUserName.Text;
+                else
+                    cancel.txtCanceledBy.Text = solduser;
+                cancel.ShowDialog();
             }
         }
     }

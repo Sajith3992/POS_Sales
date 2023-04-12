@@ -31,7 +31,7 @@ namespace POS_Sales
         {
             try
             {
-                if (txtUsername.Text == cancelOrder.txtCanceledBy.Text)
+                if (txtUsername.Text.ToLower() == cancelOrder.txtCanceledBy.Text.ToLower()) 
                 {
                     MessageBox.Show("Void by name and canceled by name are same!. Please void by another person.", "warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;

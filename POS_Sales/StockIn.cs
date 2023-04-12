@@ -47,12 +47,12 @@ namespace POS_Sales
             int i = 0;
             dvgStockIn.Rows.Clear();
             cn.Open();
-            cm = new SqlCommand("SELECT * FROM vwStockIn WHERE refno LIKE '"+txtRefNo.Text+ "'AND status LIKE 'Pending'",cn);
+            cm = new SqlCommand("SELECT * FROM vwStockin WHERE refno LIKE '" + txtRefNo.Text+ "'AND status LIKE 'Pending'",cn);//vwStockIn
             dr = cm.ExecuteReader();
             while (dr.Read())
             {
                 i++;
-                dvgStockIn.Rows.Add(i, dr[0].ToString(), dr[1].ToString(), dr[2].ToString(), dr[3].ToString(), dr[4].ToString(), dr[5].ToString(), dr[6].ToString(), dr[7].ToString());
+                dvgStockIn.Rows.Add(i, dr[0].ToString(), dr[1].ToString(), dr[2].ToString(), dr[3].ToString(), dr[4].ToString(), dr[5].ToString(), dr[6].ToString(), dr["supplier"].ToString());
 
             }
             dr.Close();
@@ -104,13 +104,13 @@ namespace POS_Sales
                         {
                             //update product quantity
                             cn.Open();
-                            cm = new SqlCommand("Update tdProduct SET qty = qty + " + int.Parse(dvgStockIn.Rows[i].Cells[5].Value.ToString()) + "WHERE pcode LIKE '" + dvgStockIn.Rows[i].Cells[3].Value.ToString() + "'", cn);
+                            cm = new SqlCommand("UPDATE tdProduct SET qty = qty + " + int.Parse(dvgStockIn.Rows[i].Cells[5].Value.ToString()) + " WHERE pcode LIKE '" + dvgStockIn.Rows[i].Cells[3].Value.ToString() + "'", cn);
                             cm.ExecuteNonQuery();
                             cn.Close();
 
                             //update stockin quantity
                             cn.Open();
-                            cm = new SqlCommand("UPDATE tdStock SET qty = qty + " + int.Parse(dvgStockIn.Rows[i].Cells[5].Value.ToString()) + ",status='Done' WHERE id LIKE '" + dvgStockIn.Rows[i].Cells[1].Value.ToString() + "'", cn);
+                            cm = new SqlCommand("UPDATE tdStock SET qty = qty + " + int.Parse(dvgStockIn.Rows[i].Cells[5].Value.ToString()) + ", status='Done' WHERE id LIKE '" + dvgStockIn.Rows[i].Cells[1].Value.ToString() + "'", cn);
                             cm.ExecuteNonQuery();
                             cn.Close();
                         }
@@ -144,6 +144,44 @@ namespace POS_Sales
                     MessageBox.Show("Item has been sucessfully removed", stitle, MessageBoxButtons.OK, MessageBoxIcon.Information);
                     LoadStock();
                 }
+            }
+        }
+
+        private void btnLoad_Click(object sender, EventArgs e)//8.20.18
+        {
+            try
+            {
+                int i = 0;
+                dvgInStockHistory.Rows.Clear();
+                //  cn.Open();
+                if (cn.State != ConnectionState.Open)
+                {
+                    cn.Open();
+                }
+                cm = new SqlCommand("SELECT * FROM vwStockin WHERE CAST(sdate as date) BETWEEN '" + dtFrom.Value.ToShortDateString()+ "' AND '" + dtTo.Value.ToShortDateString() + "' AND status LIKE 'Done'", cn);
+                dr = cm.ExecuteReader();
+                while (dr.Read())
+                {
+                    i++;
+                    /* string dateString = dr[5].ToString();
+                     DateTime dateTime;
+                     if (DateTime.TryParse(dateString, out dateTime))
+                     {
+                         dvgInStockHistory.Rows.Add(i, dr[0].ToString(), dr[1].ToString(), dr[2].ToString(), dr[3].ToString(), dr[4].ToString(), dateTime.ToShortDateString(), dr[6].ToString(), dr[7].ToString());
+                     }
+                     else
+                     {
+                         MessageBox.Show("Nothing Data....! Please Try Again");
+                     }*/
+                      dvgInStockHistory.Rows.Add(i, dr[0].ToString(), dr[1].ToString(), dr[2].ToString(), dr[3].ToString(), dr[4].ToString(), DateTime.Parse(dr[5].ToString()).ToShortDateString(), dr[6].ToString(), dr["supplier"].ToString());
+
+                }
+                dr.Close();
+                cn.Close();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message,"Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
             }
         }
     }

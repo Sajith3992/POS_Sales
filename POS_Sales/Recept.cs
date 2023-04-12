@@ -62,7 +62,6 @@ namespace POS_Sales
 
                 DataSet1 ds = new DataSet1();
                 SqlDataAdapter da = new SqlDataAdapter();
-
                 cn.Open();
                 da.SelectCommand = new SqlCommand("SELECT c.id, c.transno, c.pcode, c.price, c.qty, c.disc, c.total, c.sdate, c.status,  p.pdesc FROM tbCart AS c INNER JOIN tdProduct AS p ON p.pcode=c.pcode WHERE c.transno LIKE '" + cashier.lblTransNo.Text + "'", cn);
                 da.Fill(ds.Tables["dtRecept"]);
@@ -90,7 +89,7 @@ namespace POS_Sales
                 reportViewer1.LocalReport.SetParameters(pTransaction);
                 reportViewer1.LocalReport.SetParameters(pCashier);
 
-                rptDataSourece = new ReportDataSource("DataSet1", ds.Tables["dtSold"]);
+                rptDataSourece = new ReportDataSource("DataSet1", ds.Tables["dtRecept"]);//dtSold
                 reportViewer1.LocalReport.DataSources.Add(rptDataSourece);
                 reportViewer1.SetDisplayMode(Microsoft.Reporting.WinForms.DisplayMode.PrintLayout);
                 reportViewer1.ZoomMode = ZoomMode.Percent;

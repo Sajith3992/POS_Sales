@@ -76,6 +76,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Adjustments.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Adjustments.Designer.cs">
+      <DependentUpon>Adjustments.cs</DependentUpon>
+    </Compile>
     <Compile Include="Brand.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -175,6 +181,12 @@
     <Compile Include="NewDiscount.Designer.cs">
       <DependentUpon>NewDiscount.cs</DependentUpon>
     </Compile>
+    <Compile Include="POSReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="POSReport.Designer.cs">
+      <DependentUpon>POSReport.cs</DependentUpon>
+    </Compile>
     <Compile Include="Product.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -199,6 +211,12 @@
     </Compile>
     <Compile Include="Recept.Designer.cs">
       <DependentUpon>Recept.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Record.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Record.Designer.cs">
+      <DependentUpon>Record.cs</DependentUpon>
     </Compile>
     <Compile Include="SqlServerTypes\Loader.cs" />
     <Compile Include="UserProperties.cs">
@@ -262,6 +280,9 @@
     <Compile Include="Void.Designer.cs">
       <DependentUpon>Void.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Adjustments.resx">
+      <DependentUpon>Adjustments.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Brand.resx">
       <DependentUpon>Brand.cs</DependentUpon>
     </EmbeddedResource>
@@ -307,6 +328,9 @@
     <EmbeddedResource Include="NewDiscount.resx">
       <DependentUpon>NewDiscount.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="POSReport.resx">
+      <DependentUpon>POSReport.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Product.resx">
       <DependentUpon>Product.cs</DependentUpon>
     </EmbeddedResource>
@@ -319,6 +343,10 @@
     <EmbeddedResource Include="Recept.resx">
       <DependentUpon>Recept.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Record.resx">
+      <DependentUpon>Record.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rptSoldReport.rdlc" />
     <EmbeddedResource Include="rptRecept.rdlc" />
     <EmbeddedResource Include="UserProperties.resx">
       <DependentUpon>UserProperties.cs</DependentUpon>
@@ -384,9 +412,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Image\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="MetroFramework.txt" />
     <Content Include="SqlServerTypes\readme.htm" />

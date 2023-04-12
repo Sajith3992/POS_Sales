@@ -76,6 +76,7 @@ namespace POS_Sales
                         cm.Parameters.AddWithValue("@sdate", stockIn.dtStockIn.Value);
                         cm.Parameters.AddWithValue("@stockinby", stockIn.txtStockInBy.Text);
                         cm.Parameters.AddWithValue("@supplieid", stockIn.lblId.Text);
+                       
                         cm.ExecuteNonQuery();
                         cn.Close();
                         stockIn.LoadStock();

@@ -105,8 +105,17 @@ namespace POS_Sales
         private void btnDsale_Click(object sender, EventArgs e)
         {
             slide(btnDsale);
-            DailySale dailySale = new DailySale();
+            DailySale dailySale = new DailySale(new MainForm1());
             dailySale.solduser = lblUsername.Text;
+
+            dailySale.dateFrom.Enabled = false;//7.52-
+            dailySale.dateTo.Enabled = false;
+            dailySale.cboCashier.Enabled = false;
+            dailySale.cboCashier.Text = lblUsername.Text;//-7.52.11
+
+            dailySale.picclose.Visible = true;//8.25.44
+            dailySale.lblTitle.Visible = true;
+
             dailySale.ShowDialog();
         }
 
